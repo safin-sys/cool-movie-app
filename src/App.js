@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import Movie from "./components/Movie";
 
 function App() {
+  const [movies, setMovies] = useState([]);
+  const popularity = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${process.env.REACT_APP_API_KEY}`;
+
+  useEffect(() => {
+    fetch(popularity)
+    .then(res => res.json())
+    .then(data => {
+      setMovies(data.results);
+      console.log(data.results);
+    });
+  }, [popularity]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {movies.map(movie => {
+        return <Movie key={movie.title} movie={movie} />
+      })}
     </div>
   );
 }
