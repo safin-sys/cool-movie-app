@@ -1,10 +1,12 @@
 import React from 'react';
-import Popular from "./components/Popular";
+import Carousels from "./components/Carousels";
+import Search from './components/Search';
 
 function App() {
   return (
     <div className="App">
-      <Popular />
+      <Search />
+      <Carousels />
     </div>
   );
 }

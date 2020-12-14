@@ -6,16 +6,20 @@
   font-family: Helvetica, sans-serif;
 }
 
-.popular {
+.search-results {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-column-gap: 40px;
-          column-gap: 40px;
-  overflow-x: auto;
-  margin: auto;
-  padding: 10px;
-  width: 70%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.carousel-container .section-header {
+  margin: 20px;
+}
+
+.carousel-container .carousel {
+  margin: 20px;
 }
 
 .card {
@@ -61,5 +65,11 @@
   font-size: 14px;
   display: inline;
   word-spacing: .2rem;
+}
+
+@media (max-width: 768px) {
+  .carousel-container .carousel {
+    margin: 20px 0;
+  }
 }
 /*# sourceMappingURL=index.css.map */

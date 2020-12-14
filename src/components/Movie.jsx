@@ -1,6 +1,5 @@
 import React from 'react';
 
-const imgdb = 'http://image.tmdb.org/t/p/w200';
 const genre = [
     {
       "id": 28,
@@ -80,24 +79,33 @@ const genre = [
     }
 ];
 function Movie({ movie }) {
-    return (
-        <div className="card">
-            <div className="img-container" style={{backgroundImage: `linear-gradient(0deg, rgba(2,0,36,0.50) 0%, rgba(0,212,255,0) 40%), url(${imgdb + movie.poster_path})`}}></div>
-            <p className="rating">{movie.vote_average}</p>
-            <h3 className="title">{movie.original_title}</h3>
-            <p className="genre">
-            {movie.genre_ids.map((id, index) => {
-              let genreArr = '';
-              for (let i = 0; i < genre.length; i++) {
-                if (genre[i].id === id && index < 2) {
-                  genreArr += genre[i].name + ' ';
-                };
+  const img = 'http://image.tmdb.org/t/p/w200';
+  const noimg = 'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg';
+  function renderImg() {
+    if (movie != null) {
+      return img + movie.poster_path;
+    } else {
+      return noimg;
+    };
+  };
+  return (
+      <div className="card">
+          <div className="img-container" style={{backgroundImage: `linear-gradient(0deg, rgba(2,0,36,0.50) 0%, rgba(0,212,255,0) 40%), url(${renderImg()})`}}></div>
+          <p className="rating">{movie ? movie.vote_average : 0}</p>
+          <h3 className="title">{movie ? movie.original_title || movie.original_name : null}</h3>
+          <p className="genre">
+          {movie ? movie.genre_ids.map((id, index) => {
+            let genreArr = '';
+            for (let i = 0; i < genre.length; i++) {
+              if (genre[i].id === id && index < 2) {
+                genreArr += genre[i].name + ' ';
               };
-              return genreArr;
-            })}
-            </p>
-        </div>
-    )
+            };
+            return genreArr;
+          }) : ''}
+          </p>
+      </div>
+  );
 };
 
 export default Movie;
