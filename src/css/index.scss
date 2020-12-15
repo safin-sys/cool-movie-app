@@ -12,6 +12,7 @@
         margin: 14px;
         justify-self: center;
         align-self: center;
+        position: relative;
         input {
             width: 300px;
             height: 32px;
@@ -28,6 +29,26 @@
         input::placeholder {
             color: #FD0001;
         }
+        button {
+            position: absolute;
+            right: 10px;
+            top: 6px;
+            background: none;
+            border: none;
+            img {
+                width: 20px;
+                height: 20px;
+            }
+        }
+        button:focus {
+            outline: none;
+        }
+    }
+    .search-results {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0 40px;
+        margin: 0 10px;
     }
 }
 
@@ -83,6 +104,11 @@
     .carousel-container {
         .carousel {
             margin: 20px 0;
+        }
+    }
+    .search-container {
+        .search-results {
+            gap: 0;
         }
     }
 }

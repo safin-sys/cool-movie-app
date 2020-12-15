@@ -1,4 +1,5 @@
 import React from 'react';
+import noimg from '../img/img404.webp'
 
 const genre = [
     {
@@ -79,15 +80,15 @@ const genre = [
     }
 ];
 function Movie({ movie }) {
-  const img = 'http://image.tmdb.org/t/p/w200';
-  const noimg = 'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg';
+
   function renderImg() {
-    if (movie != null) {
-      return img + movie.poster_path;
+    if (movie.poster_path) {
+      return 'http://image.tmdb.org/t/p/w200' + movie.poster_path;
     } else {
       return noimg;
     };
   };
+
   return (
       <div className="card">
           <div className="img-container" style={{backgroundImage: `linear-gradient(0deg, rgba(2,0,36,0.50) 0%, rgba(0,212,255,0) 40%), url(${renderImg()})`}}></div>
