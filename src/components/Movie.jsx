@@ -83,7 +83,7 @@ function Movie({ movie }) {
 
   function renderImg() {
     if (movie.poster_path) {
-      return 'http://image.tmdb.org/t/p/w200' + movie.poster_path;
+      return 'https://image.tmdb.org/t/p/w200' + movie.poster_path;
     } else {
       return noimg;
     };
