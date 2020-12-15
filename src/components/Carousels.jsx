@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Movie from './Movie';
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
+import Carousel from 'react-elastic-carousel';
 
 function Carousels() {
     const [upcomingMvi, setUpcomingMvi] = useState([]);
@@ -28,65 +26,33 @@ function Carousels() {
         fetchPopular().then(data => setPopularMvi(data.results));
     }, [upcoming, popular]);
 
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 200,
-        slidesToShow: 8,
-        slidesToScroll: 1,
-        arrows: false,
-        responsive: [
-            {
-                breakpoint: 1920,
-                settings: {
-                    slidesToShow: 8
-                }
-            },
-            {
-                breakpoint: 1366,
-                settings: {
-                    slidesToShow: 5
-                }
-            },
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 2
-                }
-            }
-        ]
-    };
+    const breakPoints = [
+        {width: 300, itemsToShow: 1, itemsToScroll: 1, pagination: false},
+        {width: 400, itemsToShow: 2, itemsToScroll: 2, pagination: false},
+        {width: 700, itemsToShow: 3, itemsToScroll: 3, pagination: false},
+        {width: 800, itemsToShow: 4, itemsToScroll: 4, pagination: false},
+        {width: 1300, itemsToShow: 5, itemsToScroll: 5, pagination: false},
+        {width: 1900, itemsToShow: 6, itemsToScroll: 6, pagination: false}
+    ];
 
     return (
         <React.Fragment>
             <div className="carousel-container">
                 <h3 className="section-header">Upcoming Movies</h3>
-                <Slider className="carousel" {...settings}>
+                <Carousel className="carousel" breakPoints={breakPoints}>
                     {upcomingMvi.map((movie, index) => {
                         return <Movie key={index} movie={movie} />
                     })}
-                </Slider>
+                </Carousel>
             </div>
 
             <div className="carousel-container">
                 <h3 className="section-header">Popular Movies</h3>
-                <Slider className="carousel" {...settings}>
+                <Carousel className="carousel" breakPoints={breakPoints}>
                     {popularMvi.map((movie, index) => {
                         return <Movie key={index} movie={movie} />
                     })}
-                </Slider>
+                </Carousel>
             </div>
         </React.Fragment>
     )
