@@ -17,7 +17,7 @@ function Navbar() {
     return (
         <React.Fragment>
             <nav>
-                <h1 className="logo">COOL <br/> MOVIEAPP</h1>
+                <a className="logo" href="/"><h1>COOL <br/> MOVIEAPP</h1></a>
                 <ul>
                     <li><a href="/" className="nav-active">HOME</a></li>
                     <li><a href="#upcoming">UPCOMING</a></li>

@@ -11,14 +11,21 @@ nav {
     margin: auto;
     width: 70%;
     height: 64px;
+    justify-content: space-between;
     .logo {
+        display: flex;
+        align-items: flex-end;
+        text-decoration: none;
+        height: 64px;
         background-color: #FD0001;
-        font-size: 18px;
-        padding: 6px 16px;
-        color: white;
-        font-weight: normal;
-        text-align: center;
         margin-right: 32px;
+        h1 {
+            padding: 6px 16px;
+            font-size: 18px;
+            color: white;
+            font-weight: normal;
+            text-align: center;
+        }
     }
     ul {
         list-style: none;
@@ -155,6 +162,10 @@ nav {
             border: none;
             cursor: pointer;
             background-color: transparent;
+            img {
+                height: 30px;
+                width: 30px;
+            }
         }
         .ham:focus {
             outline: none;
@@ -210,14 +221,18 @@ nav {
         .img-container {
             width: 100%;
             height: 231px;
+            margin-bottom: 12px;
+        }
+        .title {
+            margin-bottom: 0px;
         }
         .rating {
-            bottom: 70px;
+            bottom: 74px;
         }
     }
     .search-container {
         .search-results {
-            gap: 0;
+            gap: 4px 0;
         }
     }
 }
