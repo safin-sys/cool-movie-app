@@ -7,26 +7,21 @@ function Hero() {
 
     const trending = `https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.REACT_APP_API_KEY}`;
 
-    const videos = `https://api.themoviedb.org/3/movie/${trend ? trend[0].id : null}/videos?api_key=${process.env.REACT_APP_API_KEY}`;
-
     useEffect(() => {
         async function fetchTrending() {
             const res = await fetch(trending);
             const data = await res.json();
+
+            const videos = `https://api.themoviedb.org/3/movie/${data.results[0].id}/videos?api_key=${process.env.REACT_APP_API_KEY}`;
+            const vidRes = await fetch(videos);
+            const vidData = await vidRes.json();
+            setVid(vidData.results[0]);
+
             return data;
         };
 
         fetchTrending().then(data => setTrend(data.results));
-
-        if (trend) {
-            async function fetchVideoUrl() {
-                const res = await fetch(videos);
-                const data = await res.json();
-                return data;
-            };
-            fetchVideoUrl().then(data => setVid(data.results[0]));
-        };
-    }, [trending, trend, videos])
+    }, [trending])
 
     return (
         <div className="hero">
