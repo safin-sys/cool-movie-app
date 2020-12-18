@@ -91,7 +91,11 @@ function Movie({ movie }) {
 
   return (
       <div className="card">
-          <div className="img-container" style={{backgroundImage: `linear-gradient(0deg, rgba(2,0,36,0.50) 0%, rgba(0,212,255,0) 40%), url(${renderImg()})`}}></div>
+          <div className="img-container" 
+          style={{
+            backgroundImage: `linear-gradient(0deg, rgba(2,0,36,0.50) 0%, rgba(0,212,255,0) 40%),url(${renderImg()})`
+          }}></div>
+          
           <p className="rating">{movie ? movie.vote_average : 0}</p>
           <h3 className="title">{movie ? movie.original_title || movie.original_name : null}</h3>
           <p className="genre">
