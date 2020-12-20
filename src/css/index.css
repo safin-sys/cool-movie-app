@@ -75,7 +75,7 @@ nav .ham {
 
 .hero {
   width: 100%;
-  height: 80vh;
+  height: 70vh;
   overflow: hidden;
   position: relative;
 }
@@ -84,7 +84,8 @@ nav .ham {
   z-index: 0;
   position: absolute;
   min-width: 100vw;
-  max-height: 140%;
+  min-height: 100%;
+  max-height: 160%;
   top: 50%;
   bottom: 50%;
   right: 50%;
@@ -148,6 +149,63 @@ nav .ham {
   outline: none;
 }
 
+.hero-videos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 150px;
+  background-color: #FAF4F4;
+  position: relative;
+}
+
+.hero-videos .vid-card-container {
+  width: 70%;
+  position: absolute;
+  top: -70px;
+}
+
+.hero-videos .vid-card-container .vid-cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+.hero-videos .vid-card-container .vid-cards .vid-card {
+  position: relative;
+}
+
+.hero-videos .vid-card-container .vid-cards .vid-card .thumbnail {
+  width: 290px;
+  height: 163px;
+  background-color: pink;
+  background-size: cover;
+  background-position: center;
+  border-radius: 14px;
+}
+
+.hero-videos .vid-card-container .vid-cards .vid-card button {
+  position: absolute;
+  bottom: 34px;
+  left: 20px;
+  border: none;
+  background: none;
+}
+
+.hero-videos .vid-card-container .vid-cards .vid-card .title {
+  font-size: 18px;
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  color: white;
+}
+
 .search-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -156,9 +214,12 @@ nav .ham {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  position: relative;
 }
 
 .search-container .search {
+  position: absolute;
+  bottom: 30px;
   margin: 14px;
   -ms-grid-column-align: center;
       justify-self: center;
@@ -372,6 +433,13 @@ nav .ham {
   }
   .hero .des {
     width: 340px;
+  }
+  .hero-videos .vid-card-container {
+    width: 85%;
+  }
+  .hero-videos .vid-card-container .vid-cards .vid-card .thumbnail {
+    width: 249px;
+    height: 140px;
   }
   .carousel-container {
     width: auto;

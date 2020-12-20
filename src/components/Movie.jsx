@@ -1,5 +1,5 @@
 import React from 'react';
-import noimg from '../img/img404.webp'
+import noimg from '../img/img404.webp';
 
 const genre = [
     {
