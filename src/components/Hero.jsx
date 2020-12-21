@@ -5,24 +5,28 @@ import Carousel from 'react-elastic-carousel';
 
 function Hero() {
     const [trend, setTrend] = useState();
-    const [vid, setVid] = useState();
+    const [vid, setVid] = useState([]);
 
     const trending = `https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.REACT_APP_API_KEY}`;
 
     useEffect(() => {
         async function fetchTrending() {
             const res = await fetch(trending);
-            const data = await res.json();
+            const data = await res.json();            
+            const trendData = data.results.slice(0, 4);
 
-            const videos = `https://api.themoviedb.org/3/movie/${data.results[0].id}/videos?api_key=${process.env.REACT_APP_API_KEY}`;
-            const vidRes = await fetch(videos);
-            const vidData = await vidRes.json();
-            setVid(vidData.results.slice(0, 4));
+            trendData.forEach(async trend => {
+                const videos = `https://api.themoviedb.org/3/${trend.media_type}/${trend.id}/videos?api_key=${process.env.REACT_APP_API_KEY}`;
 
-            return data;
+                const res = await fetch(videos);
+                const data = await res.json();  
+                setVid(vid => [...vid, data.results]);
+            });
+
+            return trendData;
         };
 
-        fetchTrending().then(data => setTrend(data.results.slice(0, 4)));
+        fetchTrending().then(data => setTrend(data));
     }, [trending])
 
     const breakPoints = [
@@ -37,20 +41,20 @@ function Hero() {
                 
                 <h1 className="title">{trend ? trend[0].original_title : null}</h1>
                 <p className="des">{trend ? trend[0].overview : null }</p>
-                {trend && vid ? <a href={'https://youtu.be/' + vid.key} rel="noreferrer" target="_blank" className="watch-btn">Watch {vid.type} <img src={play} alt="Play Icon"/></a> : null}
+                {vid[0] !== undefined ? <a href={'https://youtu.be/' + vid[0][0].key} rel="noreferrer" target="_blank" className="watch-btn">Watch {vid[0][0].type} <img src={play} alt="Play Icon"/></a> : null}
             </div>
             <div className="hero-videos">
                 <div className="vid-card-container">
                     <div className="vid-cards">
-                        <Carousel breakPoints={breakPoints}>
-                            {trend ? trend.map((t, index) => {
+                        {trend ? <Carousel breakPoints={breakPoints}>
+                            {trend.map((t, index) => {
                                 if (index > 0) {
-                                    return <Trailers key={index} trend={t} />
+                                    return <Trailers key={index} trend={t} vid={vid[index]} />
                                 } else {
                                     return null;
                                 };
-                            }) : null}
-                        </Carousel>
+                            })}
+                        </Carousel> : null}
                     </div>
                 </div>
             </div>

@@ -190,7 +190,7 @@ nav .ham {
   border-radius: 14px;
 }
 
-.hero-videos .vid-card-container .vid-cards .vid-card button {
+.hero-videos .vid-card-container .vid-cards .vid-card a {
   position: absolute;
   bottom: 34px;
   left: 20px;
