@@ -162,6 +162,8 @@ nav {
     display: flex;
     flex-direction: column;
     position: relative;
+    width: 70%;
+    margin: auto;
     .search {
         position: absolute;
         bottom: 30px;
@@ -375,6 +377,7 @@ nav {
         }
     }
     .search-container {
+        width: auto;
         .search-results {
             gap: 4px 0;
         }

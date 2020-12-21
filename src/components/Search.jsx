@@ -4,7 +4,7 @@ import srcIco from "../img/icons/search.svg";
 import xIco from "../img/icons/x.svg";
 
 function Search() {
-    const [ query, setQuery ] = useState();
+    const [ query, setQuery ] = useState('');
     const [ DOMQuery, setDOMQuery ] = useState();
     const [ queryResults, setQueryResults ] = useState([]);
     const queryAPI = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_API_KEY}&query=`;

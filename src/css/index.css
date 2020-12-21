@@ -215,6 +215,8 @@ nav .ham {
       -ms-flex-direction: column;
           flex-direction: column;
   position: relative;
+  width: 70%;
+  margin: auto;
 }
 
 .search-container .search {
@@ -461,6 +463,9 @@ nav .ham {
   }
   .card .rating {
     bottom: 74px;
+  }
+  .search-container {
+    width: auto;
   }
   .search-container .search-results {
     gap: 4px 0;
