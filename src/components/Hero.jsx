@@ -14,7 +14,7 @@ function Hero() {
 
             const res = await fetch(trending);
             const data = await res.json();            
-            const trendData = data.results.slice(0, 4);
+            const trendData = data.results;
 
             const videos = `https://api.themoviedb.org/3/${trendData[0].media_type}/${trendData[0].id}/videos?api_key=${process.env.REACT_APP_API_KEY}`;
 
@@ -30,7 +30,7 @@ function Hero() {
 
     const breakPoints = [
         {width: 600, itemsToShow: 1, itemsToScroll: 1, pagination: false},
-        {width: 840, itemsToShow: 3, itemsToScroll: 1, pagination: false}
+        {width: 840, itemsToShow: 3, itemsToScroll: 3, pagination: false}
     ];
 
     return (
