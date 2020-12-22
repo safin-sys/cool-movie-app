@@ -198,6 +198,13 @@ nav .ham {
   background: none;
 }
 
+.hero-videos .vid-card-container .vid-cards .vid-card a img:hover {
+  background-color: #FF2F2F;
+  border-radius: 50%;
+  -webkit-transition: background-color .2s ease;
+  transition: background-color .2s ease;
+}
+
 .hero-videos .vid-card-container .vid-cards .vid-card .title {
   font-size: 18px;
   position: absolute;

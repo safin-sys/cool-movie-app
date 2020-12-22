@@ -145,6 +145,11 @@ nav {
                     left: 20px;
                     border: none;
                     background: none;
+                    img:hover {
+                        background-color: #FF2F2F;
+                        border-radius: 50%;
+                        transition: background-color .2s ease;
+                    }
                 }
                 .title {
                     font-size: 18px;

@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import play from '../img/icons/play.svg';
-function Trailers({ trend, vid }) {
+function Trailers({ trend }) {
+    const [vid, setVid] = useState();
+
+    useEffect(() => {
+        async function fetchVids() {
+            const url = `https://api.themoviedb.org/3/${trend.media_type}/${trend.id}/videos?api_key=${process.env.REACT_APP_API_KEY}`;
+
+            const res = await fetch(url);
+            const data = await res.json();
+            setVid(data.results[0]);
+        };
+        fetchVids();
+    }, [trend]);
+
     function renderImg() {
         if(vid) {
-            return `https://img.youtube.com/vi/${vid[0].key}/0.jpg`;
+            return `https://img.youtube.com/vi/${vid.key}/0.jpg`;
         };
     };
 
     function getLink() {
         if(vid) {
-            return `https://youtu.be/${vid[0].key}`;
+            return `https://youtu.be/${vid.key}`;
         };
     };
     return (
