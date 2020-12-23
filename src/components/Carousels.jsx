@@ -49,7 +49,7 @@ function Carousels() {
     return (
         <React.Fragment>
             <div className="carousel-container">
-                <h3 className="section-header" id="upcoming">Now Playing</h3>
+                <h3 className="section-header" id="now-playing">Now Playing</h3>
                 <Carousel className="carousel" breakPoints={breakPoints}>
                     {nowPlayingMvi.map((movie, index) => {
                         return <Movie key={index} movie={movie} />
@@ -58,7 +58,7 @@ function Carousels() {
             </div>
 
             <div className="carousel-container">
-                <h3 className="section-header" id="popular">Popular Movies</h3>
+                <h3 className="section-header" id="movies">Popular Movies</h3>
                 <Carousel className="carousel" breakPoints={breakPoints}>
                     {popularMvi.map((movie, index) => {
                         return <Movie key={index} movie={movie} />
@@ -67,7 +67,7 @@ function Carousels() {
             </div>
 
             <div className="carousel-container">
-                <h3 className="section-header" id="upcoming">Popular TV Shows</h3>
+                <h3 className="section-header" id="tv-shows">Popular TV Shows</h3>
                 <Carousel className="carousel" breakPoints={breakPoints}>
                     {popularTv.map((movie, index) => {
                         return <Movie key={index} movie={movie} />

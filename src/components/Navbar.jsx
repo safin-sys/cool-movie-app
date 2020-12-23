@@ -21,9 +21,9 @@ function Navbar() {
                 <Link className="logo" to="/"><h1>COOL <br/> MOVIEAPP</h1></Link>
                 <ul>
                     <li><Link to="/" className="nav-active">HOME</Link></li>
-                    <li><a href="#upcoming">UPCOMING</a></li>
-                    <li><a href="#popular">POPULAR</a></li>
-                    <li><Link to="/md">MOVIE DETAILS</Link></li>
+                    <li><a href="/#now-playing">NOW PLAYING</a></li>
+                    <li><a href="/#movies">MOVIES</a></li>
+                    <li><a href="/#tv-shows">TV SHOWS</a></li>
                 </ul>
                 <button onClick={handleHam} className="ham"><img src={ham} alt="HAM"/></button>
             </nav>
@@ -31,9 +31,9 @@ function Navbar() {
                 <button onClick={handleHam} className="ham"><img src={x} alt="HAM"/></button>
                 <ul>
                     <li><Link to="/" className="nav-active">HOME</Link></li>
-                    <li><a href="#upcoming">UPCOMING</a></li>
-                    <li><a href="#popular">POPULAR</a></li>
-                    <li><Link to="/md">MOVIE DETAILS</Link></li>
+                    <li><a href="/#now-playing">NOW PLAYING</a></li>
+                    <li><a href="/#movies">MOVIES</a></li>
+                    <li><a href="/#tv-shows">TV SHOWS</a></li>
                 </ul>
             </div>
         </React.Fragment>

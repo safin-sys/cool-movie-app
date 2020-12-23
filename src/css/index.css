@@ -7,6 +7,15 @@
   scroll-behavior: smooth;
 }
 
+body::-webkit-scrollbar {
+  width: 6px;
+  background-color: black;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #FD0001;
+}
+
 nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -366,6 +375,78 @@ nav .ham {
   word-spacing: .2rem;
 }
 
+.md-hero {
+  position: relative;
+}
+
+.md-hero__img {
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.md-hero__img .hero-img {
+  z-index: 0;
+  position: absolute;
+  min-width: 100vw;
+  min-height: 100%;
+  max-height: 160%;
+  top: 50%;
+  bottom: 50%;
+  right: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-filter: brightness(60%);
+          filter: brightness(60%);
+}
+
+.md-hero__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 70vw;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  bottom: -100px;
+}
+
+.md-hero__info__poster {
+  width: 200px;
+  height: 300px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 14px 14px -10px rgba(0, 0, 0, 0.6);
+          box-shadow: 0px 14px 14px -10px rgba(0, 0, 0, 0.6);
+}
+
+.md-hero__info__overview {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 24px;
+  color: white;
+}
+
+.md-hero__info__overview__title {
+  font-size: 48px;
+}
+
+.md-hero__info__overview__genre {
+  font-weight: bold;
+  word-spacing: .2rem;
+}
+
 @media (max-width: 768px) {
   nav {
     width: 85%;
@@ -487,6 +568,26 @@ nav .ham {
   }
   .search-container .search-results {
     gap: 4px 0;
+  }
+  .md-hero__img {
+    height: 40vh;
+  }
+  .md-hero__info {
+    width: 85%;
+  }
+  .md-hero__info__poster {
+    width: 154px;
+    height: 231px;
+  }
+  .md-hero__info__overview {
+    height: calc(231px / 2);
+  }
+  .md-hero__info__overview__title {
+    font-size: 24px;
+  }
+  .md-hero__info__overview__genre {
+    font-weight: normal;
+    margin-top: 4px;
   }
 }
 /*# sourceMappingURL=index.css.map */

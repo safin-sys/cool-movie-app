@@ -36,7 +36,7 @@ function Hero() {
     return (
         <React.Fragment>
             <div className="hero">
-                <img className="hero-img" src={trend ? 'https://image.tmdb.org/t/p/original' + trend[0].backdrop_path : null} alt=""/>
+                <img className="hero-img" src={trend ? 'https://image.tmdb.org/t/p/original' + trend[0].backdrop_path : null} alt="Trending Movie Backdrop"/>
                 
                 <h1 className="title">{trend ? trend[0].original_title : null}</h1>
                 <p className="des">{trend ? trend[0].overview : null }</p>
