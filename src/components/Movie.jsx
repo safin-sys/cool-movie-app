@@ -1,5 +1,6 @@
 import React from 'react';
 import noimg from '../img/img404.webp';
+import {Link} from 'react-router-dom';
 
 const genre = [
     {
@@ -97,7 +98,7 @@ function Movie({ movie }) {
           }}></div>
           
           <p className="rating">{movie ? movie.vote_average : 0}</p>
-          <h3 className="title">{movie ? movie.original_title || movie.original_name : null}</h3>
+          <Link to={`${movie && movie.first_air_date ? 'tv' : 'movie'}/${movie.id}`}><h3 className="title">{movie ? movie.original_title || movie.original_name : null}</h3></Link>
           <p className="genre">
           {movie ? movie.genre_ids.map((id, index) => {
             let genreArr = '';

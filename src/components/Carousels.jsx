@@ -4,36 +4,38 @@ import Carousel from 'react-elastic-carousel';
 
 function Carousels() {
     const [nowPlayingMvi, setNowPlayingMvi] = useState([]);
-    const [upcomingMvi, setUpcomingMvi] = useState([]);
     const [popularMvi, setPopularMvi] = useState([]);
+    const [popularTv, setPopularTv] = useState([]);
     
-    const nowPlaying = `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_API_KEY}`;
-    const upcoming = `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_API_KEY}`;
-    const popular = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`;
+    const nowPlayingMviUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_API_KEY}`;
+
+    const popularMviUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`;
+
+    const popularTvUrl = `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_API_KEY}`;
     
     useEffect(() => {
-        async function fetchNowPlaying() {
-            const res = await fetch(nowPlaying);
+        async function fetchNowPlayingMvi() {
+            const res = await fetch(nowPlayingMviUrl);
             const data = await res.json();
             return data;
         };
 
-        async function fetchUpcoming() {
-            const res = await fetch(upcoming);
+        async function fetchPopularMvi() {
+            const res = await fetch(popularMviUrl);
             const data = await res.json();
             return data;
         };
 
-        async function fetchPopular() {
-            const res = await fetch(popular);
+        async function fetchPopularTv() {
+            const res = await fetch(popularTvUrl);
             const data = await res.json();
             return data;
         };
 
-        fetchNowPlaying().then(data => setNowPlayingMvi(data.results));
-        fetchUpcoming().then(data => setUpcomingMvi(data.results));
-        fetchPopular().then(data => setPopularMvi(data.results));
-    }, [upcoming, popular]);
+        fetchNowPlayingMvi().then(data => setNowPlayingMvi(data.results));
+        fetchPopularMvi().then(data => setPopularMvi(data.results));
+        fetchPopularTv().then(data => setPopularTv(data.results));
+    }, [popularTvUrl, popularMviUrl, nowPlayingMviUrl]);
 
     const breakPoints = [
         {width: 300, itemsToShow: 1, itemsToScroll: 1, pagination: false},
@@ -56,18 +58,18 @@ function Carousels() {
             </div>
 
             <div className="carousel-container">
-                <h3 className="section-header" id="upcoming">Upcoming Movies</h3>
+                <h3 className="section-header" id="popular">Popular Movies</h3>
                 <Carousel className="carousel" breakPoints={breakPoints}>
-                    {upcomingMvi.map((movie, index) => {
+                    {popularMvi.map((movie, index) => {
                         return <Movie key={index} movie={movie} />
                     })}
                 </Carousel>
             </div>
 
             <div className="carousel-container">
-                <h3 className="section-header" id="popular">Popular Movies</h3>
+                <h3 className="section-header" id="upcoming">Popular TV Shows</h3>
                 <Carousel className="carousel" breakPoints={breakPoints}>
-                    {popularMvi.map((movie, index) => {
+                    {popularTv.map((movie, index) => {
                         return <Movie key={index} movie={movie} />
                     })}
                 </Carousel>

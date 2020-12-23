@@ -341,13 +341,21 @@ nav .ham {
   font-weight: bold;
 }
 
-.card .title {
+.card a {
+  text-decoration: none;
+}
+
+.card a .title {
   color: #222222;
   margin-bottom: 4px;
   font-size: 16px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.card a:hover {
+  text-decoration: underline;
 }
 
 .card .genre {
@@ -442,6 +450,9 @@ nav .ham {
   }
   .hero .des {
     width: 340px;
+  }
+  .hero-videos {
+    height: 120px;
   }
   .hero-videos .vid-card-container {
     width: 85%;
