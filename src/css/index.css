@@ -372,7 +372,6 @@ nav .ham {
   color: #9E9DAD;
   font-size: 14px;
   display: inline;
-  word-spacing: .2rem;
 }
 
 .md-hero {
@@ -381,7 +380,7 @@ nav .ham {
 
 .md-hero__img {
   width: 100%;
-  height: 70vh;
+  height: 50vh;
   overflow: hidden;
   position: relative;
 }
@@ -389,9 +388,8 @@ nav .ham {
 .md-hero__img .hero-img {
   z-index: 0;
   position: absolute;
-  min-width: 100vw;
+  width: 100vw;
   min-height: 100%;
-  max-height: 160%;
   top: 50%;
   bottom: 50%;
   right: 50%;
@@ -412,7 +410,7 @@ nav .ham {
   margin-right: auto;
   left: 0;
   right: 0;
-  bottom: -100px;
+  bottom: -200px;
 }
 
 .md-hero__info__poster {
@@ -427,24 +425,53 @@ nav .ham {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   margin-left: 24px;
-  color: white;
+  margin-top: auto;
+  height: 190px;
 }
 
 .md-hero__info__overview__title {
   font-size: 48px;
 }
 
-.md-hero__info__overview__genre {
+.md-hero__info__overview__detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 4px;
+}
+
+.md-hero__info__overview__detail p {
+  margin-top: 4px;
   font-weight: bold;
-  word-spacing: .2rem;
+}
+
+.md-hero__info__overview__rating {
+  margin-top: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 6px;
+}
+
+.md-hero__info__overview__rating p {
+  font-weight: bold;
+}
+
+.summary {
+  width: 70%;
+  margin: 240px auto;
+}
+
+.summary h3 {
+  margin-bottom: 6px;
 }
 
 @media (max-width: 768px) {
@@ -530,7 +557,7 @@ nav .ham {
     color: white;
   }
   .hero .des {
-    width: 340px;
+    width: 300px;
   }
   .hero-videos {
     height: 120px;
@@ -572,22 +599,30 @@ nav .ham {
   .md-hero__img {
     height: 40vh;
   }
+  .md-hero__img .hero-img {
+    width: 130%;
+  }
   .md-hero__info {
     width: 85%;
+    bottom: -146px;
   }
   .md-hero__info__poster {
     width: 154px;
     height: 231px;
   }
   .md-hero__info__overview {
-    height: calc(231px / 2);
+    height: calc(231px / 1.7);
+    margin-left: 14px;
   }
   .md-hero__info__overview__title {
     font-size: 24px;
   }
-  .md-hero__info__overview__genre {
+  .md-hero__info__overview__detail p {
     font-weight: normal;
-    margin-top: 4px;
+  }
+  .summary {
+    width: 85%;
+    margin: 170px auto;
   }
 }
 /*# sourceMappingURL=index.css.map */

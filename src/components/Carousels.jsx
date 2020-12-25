@@ -38,8 +38,8 @@ function Carousels() {
     }, [popularTvUrl, popularMviUrl, nowPlayingMviUrl]);
 
     const breakPoints = [
-        {width: 300, itemsToShow: 1, itemsToScroll: 1, pagination: false},
-        {width: 370, itemsToShow: 2, itemsToScroll: 2, pagination: false},
+        {width: 290, itemsToShow: 1, itemsToScroll: 1, pagination: false},
+        {width: 320, itemsToShow: 2, itemsToScroll: 2, pagination: false},
         {width: 700, itemsToShow: 3, itemsToScroll: 3, pagination: false},
         {width: 800, itemsToShow: 4, itemsToScroll: 4, pagination: false},
         {width: 1300, itemsToShow: 5, itemsToScroll: 5, pagination: false},
