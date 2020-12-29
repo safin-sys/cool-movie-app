@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import play from '../img/icons/play.svg';
 import Trailers from './Trailers';
 import Carousel from 'react-elastic-carousel';
+import { Link } from 'react-router-dom';
 
 function Hero() {
     const [trend, setTrend] = useState();
@@ -38,7 +39,7 @@ function Hero() {
             <div className="hero">
                 <img className="hero-img" src={trend ? 'https://image.tmdb.org/t/p/original' + trend[0].backdrop_path : null} alt="Trending Movie Backdrop"/>
                 
-                <h1 className="title">{trend ? trend[0].original_title : null}</h1>
+                <Link to={trend ? `${trend[0].media_type}/${trend[0].id}` : ''}><h1 className="title">{trend ? trend[0].original_title : null}</h1></Link>
                 <p className="des">{trend ? trend[0].overview : null }</p>
                 {vid ? <a href={'https://youtu.be/' + vid.key} rel="noreferrer" target="_blank" className="watch-btn">Watch {vid.type} <img src={play} alt="Play Icon"/></a> : null}
             </div>

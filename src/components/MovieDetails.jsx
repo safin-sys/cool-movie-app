@@ -18,6 +18,7 @@ function MovieDetails({ match }) {
         };
 
         getMovieData();
+        window.scrollTo(0, 0)
     }, [url]);
     return (
         <React.Fragment>
@@ -34,8 +35,7 @@ function MovieDetails({ match }) {
                         <p className="md-hero__info__overview__tagline">{movie.tagline}</p>
                         
                         <div className="md-hero__info__overview__detail">
-                            <p className="md-hero__info__overview__detail__run_time">{movie.runtime} min </p>
-                            <p>|</p>
+                            {movie.runtime ? <p className="md-hero__info__overview__detail__run_time">{movie.runtime} min |</p> : null}
                             <p className="md-hero__info__overview__detail__genre">{
                                 movie.genres ? movie.genres.map((genre, i) => {
                                     if(i < 1) {
@@ -43,7 +43,8 @@ function MovieDetails({ match }) {
                                     };
                                     return '';
                                 }) : null
-                            }</p>
+                            } |</p>
+                            <p className="year">{movie.release_date || movie.first_air_date}</p>
                         </div>
 
                         <div className="md-hero__info__overview__rating">
