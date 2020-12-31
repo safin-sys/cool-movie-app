@@ -7,7 +7,22 @@ function MovieDetails({ match }) {
 
     const url = `https://api.themoviedb.org/3/${match.params.type}/${match.params.id}?api_key=${process.env.REACT_APP_API_KEY}`;
 
-    const imgUrl = 'https://image.tmdb.org/t/p/original';
+    function widthCalc() {
+        const vw = window.innerWidth;
+        if(vw > 1366) {
+            return 'original';
+        } else if(vw <= 1366 && vw > 720) {
+            return 'w1280';
+        } else if(vw <= 720 && vw > 300) {
+            return 'w780';
+        } else if (vw <= 300) {
+            return 'w300';
+        } else {
+            return 'original';
+        };
+    };
+
+    const imgUrl = 'https://image.tmdb.org/t/p/' + widthCalc();
 
     useEffect(()=>{
         async function getMovieData() {
@@ -47,10 +62,10 @@ function MovieDetails({ match }) {
                             <p className="year">{movie.release_date || movie.first_air_date}</p>
                         </div>
 
-                        <div className="md-hero__info__overview__rating">
+                        {movie ? <div className="md-hero__info__overview__rating">
                             <img src={ratingIcon} alt="Rating Icon"/>
                             <p>{movie.vote_average} <span>({movie.vote_count} votes)</span></p>
-                        </div>
+                        </div> : null}
                     </div>
                 </div>
             </div>

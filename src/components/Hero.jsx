@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 function Hero() {
     const [trend, setTrend] = useState();
     const [vid, setVid] = useState();
+    const [loading, setLoading] = useState(true);
 
     
     useEffect(() => {
@@ -23,11 +24,27 @@ function Hero() {
             const viddata = await vidres.json();
             setVid(viddata.results[0]);
 
+            setLoading(false);
             return trendData;
         };
 
         fetchTrending().then(data => setTrend(data));
-    }, [])
+    }, []);
+
+    function widthCalc() {
+        const vw = window.innerWidth;
+        if(vw > 1366) {
+            return 'original';
+        } else if(vw <= 1366 && vw > 720) {
+            return 'w1280';
+        } else if(vw <= 720 && vw > 300) {
+            return 'w780';
+        } else if (vw <= 300) {
+            return 'w300';
+        } else {
+            return 'original';
+        };
+    };
 
     const breakPoints = [
         {width: 600, itemsToShow: 1, itemsToScroll: 1, pagination: false},
@@ -36,8 +53,14 @@ function Hero() {
 
     return (
         <React.Fragment>
+            {loading ? <div className="loading">
+                <div className="bar"></div>
+                <div className="logo">
+                    <h1>COOL <br/> MOVIEAPP</h1>
+                </div>
+            </div> : null}
             <div className="hero">
-                <img className="hero-img" src={trend ? 'https://image.tmdb.org/t/p/original' + trend[0].backdrop_path : null} alt="Trending Movie Backdrop"/>
+                <img className="hero-img" src={trend ? 'https://image.tmdb.org/t/p/' + widthCalc() + trend[0].backdrop_path : null} alt="Trending Movie Backdrop"/>
                 
                 <Link to={trend ? `${trend[0].media_type}/${trend[0].id}` : ''}><h1 className="title">{trend ? trend[0].original_title : null}</h1></Link>
                 <p className="des">{trend ? trend[0].overview : null }</p>
