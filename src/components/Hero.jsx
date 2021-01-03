@@ -54,7 +54,6 @@ function Hero() {
     return (
         <React.Fragment>
             {loading ? <div className="loading">
-                <div className="bar"></div>
                 <div className="logo">
                     <h1>COOL <br/> MOVIEAPP</h1>
                 </div>
