@@ -481,7 +481,7 @@ nav {
         .md-casts {
             display: flex;
             flex-wrap: wrap;
-            gap: 14px;
+            gap: 14px 24px;
             .md-cast {
                 display: flex;
                 align-items: center;
@@ -501,6 +501,56 @@ nav {
                 .on {
                     font-weight: bold;
                 }
+            }
+        }
+    }
+}
+
+footer {
+    width: 70%;
+    margin: 48px auto auto auto;
+    display: grid;
+    grid-template-columns: .5fr 1fr .5fr;
+    align-items: center;
+    .logo {
+        display: flex;
+        align-items: flex-end;
+        text-decoration: none;
+        width: fit-content;
+        height: 64px;
+        background: linear-gradient(45deg, rgba(253,0,1,1) 10%, rgba(255,47,47,1) 90%);
+        margin-right: 32px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        h1 {
+            padding: 6px 16px;
+            font-size: 18px;
+            color: white;
+            font-weight: normal;
+            text-align: center;
+        }
+    }
+    .text {
+        justify-self: center;
+        display: flex;
+        gap: 6px;
+        text-align: center;
+        a {
+            color: black;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    }
+    .social {
+        justify-self: end;
+        a {
+            margin-inline: 4px;
+            svg {
+                width: 24px;
+                height: 24px;
+                fill: black;
             }
         }
     }

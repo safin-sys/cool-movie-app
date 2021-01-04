@@ -34,7 +34,7 @@ function MovieDetails({ match }) {
         };
 
         getMovieData();
-        //window.scrollTo(0, 0)
+        window.scrollTo(0, 0)
     }, [url]);
     return (
         <React.Fragment>

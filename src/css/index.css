@@ -652,7 +652,7 @@ nav .ham {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  gap: 14px;
+  gap: 14px 24px;
 }
 
 .md-details .casts .md-casts .md-cast {
@@ -687,6 +687,77 @@ nav .ham {
 
 .md-details .casts .md-casts .md-cast .on {
   font-weight: bold;
+}
+
+footer {
+  width: 70%;
+  margin: 48px auto auto auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: .5fr 1fr .5fr;
+      grid-template-columns: .5fr 1fr .5fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+footer .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  text-decoration: none;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 64px;
+  background: linear-gradient(45deg, #fd0001 10%, #ff2f2f 90%);
+  margin-right: 32px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+footer .logo h1 {
+  padding: 6px 16px;
+  font-size: 18px;
+  color: white;
+  font-weight: normal;
+  text-align: center;
+}
+
+footer .text {
+  justify-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 6px;
+  text-align: center;
+}
+
+footer .text a {
+  color: black;
+  text-decoration: none;
+}
+
+footer .text a:hover {
+  text-decoration: underline;
+}
+
+footer .social {
+  -ms-grid-column-align: end;
+      justify-self: end;
+}
+
+footer .social a {
+  margin-inline: 4px;
+}
+
+footer .social a svg {
+  width: 24px;
+  height: 24px;
+  fill: black;
 }
 
 @media (max-width: 768px) {

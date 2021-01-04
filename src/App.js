@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Search from './components/Search';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import MovieDetails from './components/MovieDetails';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route path="/:type/:id" component={MovieDetails} />
         </Switch>
+        <Footer />
       </div>
     </Router>
   );
