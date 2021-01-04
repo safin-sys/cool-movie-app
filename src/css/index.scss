@@ -429,7 +429,7 @@ nav {
     width: 70%;
     margin: 24px auto;
     display: flex;
-    justify-content: space-between;
+    column-gap: 64px;
     h3 {
         margin-bottom: 14px;
     }
@@ -438,7 +438,7 @@ nav {
             display: flex;
             flex-wrap: wrap;
             gap: 14px;
-            max-width: 420px;
+            width: 420px;
             .vid-card {
                 position: relative;
                 .thumbnail {
@@ -478,7 +478,31 @@ nav {
         }
     }
     .casts {
-        width: 420px;
+        .md-casts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            .md-cast {
+                display: flex;
+                align-items: center;
+                column-gap: 14px;
+                width: 210px;
+                &__img-container {
+                    width: 80px;
+                    min-width: 80px;
+                    max-width: 80px;
+                    height: 80px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .on {
+                    font-weight: bold;
+                }
+            }
+        }
     }
 }
 
@@ -642,6 +666,7 @@ nav {
         width: 85%;
         .videos {
             .md-vid {
+                width: auto;
                 .vid-card {
                     margin: auto;
                     .thumbnail {
@@ -654,6 +679,11 @@ nav {
         .casts {
             margin-top: 24px;
             width: auto;
+            .md-casts {
+                .md-cast {
+                    margin: auto;
+                }
+            }
         }
     }
 }

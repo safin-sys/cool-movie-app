@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ratingIcon from '../img/icons/rating.svg';
 import play from '../img/icons/play.svg';
+import noimg from '../img/img404.webp';
 
 function MovieDetails({ match }) {
     const [movie, setMovie] = useState({});
@@ -33,7 +34,7 @@ function MovieDetails({ match }) {
         };
 
         getMovieData();
-        window.scrollTo(0, 0)
+        //window.scrollTo(0, 0)
     }, [url]);
     return (
         <React.Fragment>
@@ -98,7 +99,8 @@ function MovieVideos({id, type}) {
         };
 
         getVids();
-    }, [url])
+    }, [url]);
+
     return (
         <div className="videos">
             <h3>Videos</h3>
@@ -120,11 +122,38 @@ function MovieVideos({id, type}) {
     );
 };
 
-function MovieCasts(id, type) {
+function MovieCasts({id, type}) {
+    const url = `https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}`;
+
+    const [casts, setCasts] = useState([]);
+
+    useEffect(() => {
+        async function getCasts() {
+            const res = await fetch(url);
+            const data = await res.json();
+
+            setCasts(data.cast.slice(0, 10));
+        };
+
+        getCasts();
+    }, [url]);
+
     return (
         <div className="casts">
             <h3>Casts</h3>
-            <p>Coming Soon...</p>
+            <div className="md-casts">{casts.map(cast => {
+                return (
+                    <div className="md-cast" key={cast.id}>
+                        <div className="md-cast__img-container">
+                            <img src={cast.profile_path ? `https://image.tmdb.org/t/p/w92${cast.profile_path}` : noimg} alt={cast.original_name}/>
+                        </div>
+                        <div className="md-cast__name">
+                            <p className="on">{cast.original_name}</p>
+                            <p className="cn">{cast.character}</p>
+                        </div>
+                    </div>
+                );
+            })}</div>
         </div>
-    )
-}
+    );
+};
