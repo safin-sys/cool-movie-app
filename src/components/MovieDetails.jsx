@@ -82,7 +82,7 @@ function MovieDetails({ match }) {
                 <MovieCasts id={match.params.id} type={match.params.type} />
             </div>
             <div className="carousel-container">
-                <h3 className="section-header">Simillar Movies</h3>
+                <h3 className="section-header">Similar Movies</h3>
                 <Recommendation id={match.params.id} type={match.params.type} />
             </div>
         </React.Fragment>
