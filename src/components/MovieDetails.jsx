@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import ratingIcon from '../img/icons/rating.svg';
 import play from '../img/icons/play.svg';
 import noimg from '../img/img404.webp';
+import Carousel from 'react-elastic-carousel';
+import Movie from './Movie'
 
 function MovieDetails({ match }) {
     const [movie, setMovie] = useState({});
@@ -78,6 +80,10 @@ function MovieDetails({ match }) {
             <div className="md-details">
                 <MovieVideos id={match.params.id} type={match.params.type} />
                 <MovieCasts id={match.params.id} type={match.params.type} />
+            </div>
+            <div className="carousel-container">
+                <h3 className="section-header">Simillar Movies</h3>
+                <Recommendation id={match.params.id} type={match.params.type} />
             </div>
         </React.Fragment>
     )
@@ -157,3 +163,37 @@ function MovieCasts({id, type}) {
         </div>
     );
 };
+
+function Recommendation({id, type}) {
+    const url = `https://api.themoviedb.org/3/${type}/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}`;
+
+    const [recs, setRecs] = useState([]);
+
+    useEffect(() => {
+        async function getRecs() {
+            const res = await fetch(url);
+            const data = await res.json();
+
+            setRecs(data.results.slice(0, 10));
+        };
+
+        getRecs();
+    }, [url])
+
+    const breakPoints = [
+        {width: 290, itemsToShow: 1, itemsToScroll: 1, pagination: false},
+        {width: 320, itemsToShow: 2, itemsToScroll: 2, pagination: false},
+        {width: 700, itemsToShow: 3, itemsToScroll: 3, pagination: false},
+        {width: 800, itemsToShow: 4, itemsToScroll: 4, pagination: false},
+        {width: 1300, itemsToShow: 5, itemsToScroll: 5, pagination: false},
+        {width: 1900, itemsToShow: 6, itemsToScroll: 6, pagination: false}
+    ];
+
+    return (
+        <Carousel breakPoints={breakPoints}>
+            {recs.map((rec, i) => {
+                return <Movie movie={rec} key={i} />
+            })}
+        </Carousel>
+    )
+}
