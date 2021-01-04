@@ -535,8 +535,9 @@ footer {
         display: flex;
         gap: 6px;
         text-align: center;
+        color: #222222;
         a {
-            color: black;
+            color: #222222;
             text-decoration: none;
         }
         a:hover {
@@ -734,6 +735,19 @@ footer {
                     margin: auto;
                 }
             }
+        }
+    }
+
+    footer {
+        width: 85%;
+        grid-template-columns: 1fr 1fr;
+        .logo,
+        .social {
+            grid-row: 2;
+        }
+        .text {
+            grid-column: 1/3;
+            margin-bottom: 14px;
         }
     }
 }
