@@ -174,7 +174,7 @@ function Recommendation({id, type}) {
             const res = await fetch(url);
             const data = await res.json();
 
-            setRecs(data.results.slice(0, 10));
+            setRecs(data.results);
         };
 
         getRecs();
