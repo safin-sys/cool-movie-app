@@ -157,6 +157,25 @@ nav ul li .nav-active {
   color: #FD0001;
 }
 
+nav .avatar {
+  margin-left: auto;
+  margin-right: 24px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+nav .avatar img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 nav .ham {
   display: none;
 }
@@ -175,15 +194,10 @@ nav .ham {
 .hero .hero-img {
   z-index: 0;
   position: absolute;
-  min-width: 100vw;
-  min-height: 100%;
-  max-height: 160%;
-  top: 50%;
-  bottom: 50%;
-  right: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .hero .title,
@@ -480,14 +494,10 @@ nav .ham {
 .md-hero__img .hero-img {
   z-index: 0;
   position: absolute;
-  width: 100vw;
-  min-height: 100%;
-  top: 50%;
-  bottom: 50%;
-  right: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
   -webkit-filter: brightness(60%);
           filter: brightness(60%);
 }
@@ -768,7 +778,8 @@ footer .social a svg {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
-  nav ul {
+  nav ul,
+  nav .avatar {
     display: none;
   }
   nav .ham {
@@ -795,16 +806,20 @@ footer .social a svg {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     width: 70%;
     height: 100vh;
     position: fixed;
-    background-color: #fff;
+    background-color: black;
     right: 0;
     top: 0;
     z-index: 3;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
   }
   .ham-nav-menu .ham {
     position: absolute;
@@ -818,15 +833,58 @@ footer .social a svg {
     outline: none;
   }
   .ham-nav-menu ul {
-    margin-top: 64px;
     list-style: none;
+    margin-top: 120px;
   }
   .ham-nav-menu ul li {
-    margin: 42px;
+    margin: 24px 0;
   }
   .ham-nav-menu ul li a {
     text-decoration: none;
     text-align: center;
+    color: #FD0001;
+    font-size: 18px;
+  }
+  .ham-nav-menu .user {
+    position: absolute;
+    bottom: 82px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-item-align: center;
+        align-self: center;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    width: 100%;
+  }
+  .ham-nav-menu .user__info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .ham-nav-menu .user__info .avatar {
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  .ham-nav-menu .user__info .avatar img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .ham-nav-menu .user__info .name {
+    margin-left: 14px;
+    color: #FD0001;
+  }
+  .ham-nav-menu .user p {
     color: #FD0001;
   }
   .ham-menu-nav-active {
@@ -842,6 +900,9 @@ footer .social a svg {
     bottom: 70%;
     z-index: 1;
     color: white;
+  }
+  .hero .title {
+    width: 85%;
   }
   .hero .des {
     width: 300px;
@@ -885,9 +946,6 @@ footer .social a svg {
   }
   .md-hero__img {
     height: 40vh;
-  }
-  .md-hero__img .hero-img {
-    width: 130%;
   }
   .md-hero__info {
     width: 85%;
