@@ -258,6 +258,8 @@ nav .ham {
 
 .hero .watch-btn img {
   margin-left: 14px;
+  width: 24px;
+  height: 24px;
 }
 
 .hero .watch-btn:focus {
@@ -311,6 +313,11 @@ nav .ham {
   left: 20px;
   border: none;
   background: none;
+}
+
+.hero-videos .vid-card-container .vid-cards .vid-card a img {
+  width: 24px;
+  height: 24px;
 }
 
 .hero-videos .vid-card-container .vid-cards .vid-card a img:hover {
@@ -828,6 +835,10 @@ footer .social a svg {
     border: none;
     cursor: pointer;
     background-color: transparent;
+  }
+  .ham-nav-menu .ham img {
+    width: 30px;
+    height: 30px;
   }
   .ham-nav-menu .ham:focus {
     outline: none;

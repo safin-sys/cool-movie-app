@@ -183,6 +183,8 @@ nav {
         cursor: pointer;
         img {
             margin-left: 14px;
+            width: 24px;
+            height: 24px;
         }
     }
     .watch-btn:focus {
@@ -219,6 +221,10 @@ nav {
                     left: 20px;
                     border: none;
                     background: none;
+                    img {
+                        width: 24px;
+                        height: 24px;
+                    }
                     img:hover {
                         background-color: #FF2F2F;
                         border-radius: 50%;
@@ -605,6 +611,10 @@ footer {
             border: none;
             cursor: pointer;
             background-color: transparent;
+            img {
+                width: 30px;
+                height: 30px;
+            }
         }
         .ham:focus {
             outline: none;
