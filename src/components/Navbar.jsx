@@ -16,6 +16,10 @@ function Navbar() {
         };
     };
 
+    function handleAvatar() {
+        document.querySelector('nav > .user').classList.toggle('user-active');
+    };
+
     return (
         <React.Fragment>
             <nav>
@@ -26,8 +30,18 @@ function Navbar() {
                     <li><a href="/#movies">MOVIES</a></li>
                     <li><a href="/#tv-shows">TV SHOWS</a></li>
                 </ul>
-                <div className="avatar">
-                    <img src={avatar} alt="avatar"/>
+                <div className="user">
+                    <div className="user__info">
+                        <div className="avatar">
+                            <img src={avatar} alt="avatar" onClick={handleAvatar} /> 
+                        </div>
+                        <p className="name">John Doe</p>
+                    </div>
+                    <ul>
+                        <li><a href="/">Wishlist</a></li>
+                        <li><a href="/">Account</a></li>
+                        <li><a href="/">Logout</a></li>
+                    </ul>
                 </div>
                 <button onClick={handleHam} className="ham"><img src={ham} alt="HAM"/></button>
             </nav>
