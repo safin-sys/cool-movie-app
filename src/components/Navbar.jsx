@@ -38,8 +38,8 @@ function Navbar() {
                         <Link to="/account"><p className="name">John Doe</p></Link>
                     </div>
                     <ul>
-                        <li><a href="/">Wishlist</a></li>
-                        <li><a href="/">Account</a></li>
+                        <li><Link to="/account">Wishlist</Link></li>
+                        <li><Link to="/account">Account</Link></li>
                         <li><a href="/">Logout</a></li>
                     </ul>
                 </div>

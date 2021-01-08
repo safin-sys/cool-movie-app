@@ -132,7 +132,7 @@ function Movie({ movie }) {
           <p className="rating">{movie ? movie.vote_average : 0}</p>
           <Link to={`../${movie && movie.first_air_date ? 'tv' : 'movie'}/${movie.id}`}><h3 className="title">{movie ? movie.original_title || movie.original_name : null}</h3></Link>
           <p className="genre">
-          {movie ? movie.genre_ids.map((id, index) => {
+          {movie && movie.genre_ids ? movie.genre_ids.map((id, index) => {
             let genreArr = '';
             for (let i = 0; i < genre.length; i++) {
               if (genre[i].id === id && index < 1) {
@@ -141,6 +141,7 @@ function Movie({ movie }) {
             };
             return genreArr;
           }) : ''}
+          {movie.genres && movie.genres[0].name}
           </p>
       </div>
   );
