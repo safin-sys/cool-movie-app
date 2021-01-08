@@ -3,9 +3,10 @@ import Carousels from "./components/Carousels";
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
 import Search from './components/Search';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import MovieDetails from './components/MovieDetails';
+import Account from './components/Account';
 import Footer from './components/Footer';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 function App() {
   return (
@@ -13,8 +14,9 @@ function App() {
       <div className="App">
         <Navbar />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/:type/:id" component={MovieDetails} />
+          <Route path="/" exact component={Home} />
+          <Route path="/:type/:id" exact component={MovieDetails} />
+          <Route path="/account" exact component={Account} />
         </Switch>
         <Footer />
       </div>

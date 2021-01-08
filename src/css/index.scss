@@ -65,6 +65,7 @@ body::-webkit-scrollbar-thumb{
 nav {
     display: flex;
     position: absolute;
+    top: 0;
     right: 0;
     left: 0;
     margin: auto;
@@ -133,11 +134,14 @@ nav {
                     object-fit: cover;
                 }
             }
-            .name {
-                margin-left: 14px;
-                color: #FD0001;
-                text-align: center;
-                visibility: hidden;
+            a {
+                text-decoration: none;
+                .name {
+                    margin-left: 14px;
+                    color: #FD0001;
+                    text-align: center;
+                    visibility: hidden;
+                }
             }
         }
         ul {
@@ -571,6 +575,58 @@ nav {
     }
 }
 
+//Account
+.account {
+    .nav-bg {
+        height: 64px;
+        background-color: black;
+    }
+    .account-container {
+        display: grid;
+        grid-template-columns: 3fr 9fr;
+        height: calc(100vh - 64px);
+        aside {
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .user-info {
+                margin-top: 24px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 6px;
+                .avatar {
+                    height: 100px;
+                    width: 100px;
+                    overflow: hidden;
+                    border-radius: 50%;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                .name {
+                    font-size: 24px;
+                }
+            }
+            .user-control {
+                margin-top: auto;
+                margin-bottom: 24px;
+                color: #FD0001;
+                display: flex;
+                justify-content: space-between;
+                width: 80%;
+            }
+        }
+        main {
+            place-self: center;
+        }
+    }
+}
+
 footer {
     width: 70%;
     margin: 48px auto auto auto;
@@ -708,9 +764,12 @@ footer {
                         object-fit: cover;
                     }
                 }
-                .name {
-                    margin-left: 14px;
-                    color: #FD0001;
+                a {
+                    text-decoration: none;
+                    .name {
+                        margin-left: 14px;
+                        color: #FD0001;
+                    }
                 }
             }
             p {

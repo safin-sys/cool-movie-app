@@ -102,6 +102,7 @@ nav {
   display: -ms-flexbox;
   display: flex;
   position: absolute;
+  top: 0;
   right: 0;
   left: 0;
   margin: auto;
@@ -210,7 +211,11 @@ nav .user__info .avatar img {
      object-fit: cover;
 }
 
-nav .user__info .name {
+nav .user__info a {
+  text-decoration: none;
+}
+
+nav .user__info a .name {
   margin-left: 14px;
   color: #FD0001;
   text-align: center;
@@ -790,6 +795,84 @@ nav .ham {
   font-weight: bold;
 }
 
+.account .nav-bg {
+  height: 64px;
+  background-color: black;
+}
+
+.account .account-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 3fr 9fr;
+      grid-template-columns: 3fr 9fr;
+  height: calc(100vh - 64px);
+}
+
+.account .account-container aside {
+  background-color: black;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.account .account-container aside .user-info {
+  margin-top: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 6px;
+}
+
+.account .account-container aside .user-info .avatar {
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.account .account-container aside .user-info .avatar img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.account .account-container aside .user-info .name {
+  font-size: 24px;
+}
+
+.account .account-container aside .user-control {
+  margin-top: auto;
+  margin-bottom: 24px;
+  color: #FD0001;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 80%;
+}
+
+.account .account-container main {
+  place-self: center;
+}
+
 footer {
   width: 70%;
   margin: 48px auto auto auto;
@@ -975,7 +1058,10 @@ footer .social a svg {
     -o-object-fit: cover;
        object-fit: cover;
   }
-  .ham-nav-menu .user__info .name {
+  .ham-nav-menu .user__info a {
+    text-decoration: none;
+  }
+  .ham-nav-menu .user__info a .name {
     margin-left: 14px;
     color: #FD0001;
   }

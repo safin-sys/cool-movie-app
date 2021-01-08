@@ -35,7 +35,7 @@ function Navbar() {
                         <div className="avatar">
                             <img src={avatar} alt="avatar" onClick={handleAvatar} /> 
                         </div>
-                        <p className="name">John Doe</p>
+                        <Link to="/account"><p className="name">John Doe</p></Link>
                     </div>
                     <ul>
                         <li><a href="/">Wishlist</a></li>
@@ -58,7 +58,7 @@ function Navbar() {
                         <div className="avatar">
                             <img src={avatar} alt="avatar"/>
                         </div>
-                        <p className="name">John Doe</p>
+                        <Link to="/account"><p className="name">John Doe</p></Link>
                     </div>
                     <p>L</p>
                 </div>
