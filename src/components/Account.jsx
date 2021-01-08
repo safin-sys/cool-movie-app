@@ -28,9 +28,6 @@ function Account() {
 
     return (
         <div className="account">
-            <div className="coming-soon">
-                <h3>Coming Soon</h3>
-            </div>
             <div className="nav-bg"></div>
             <div className="account-container">
                 <aside>
@@ -55,6 +52,7 @@ function Account() {
                     </div>
                 </main>
             </div>
+            <h3 className="udev">This part of the website is Under Development</h3>
         </div>
     )
 }

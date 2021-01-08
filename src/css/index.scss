@@ -577,18 +577,6 @@ nav {
 
 //Account
 .account {
-    .coming-soon {
-        display: grid;
-        place-content: center;
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        opacity: 20%;
-        h3 {
-            color: #FD0001;
-        }
-    }
     .nav-bg {
         height: 64px;
         background-color: black;
@@ -639,6 +627,10 @@ nav {
                 margin: 0 10px;
             }
         }
+    }
+    .udev {
+        text-align: center;
+        color: #FD0001;
     }
 }
 
