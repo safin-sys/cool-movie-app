@@ -40,7 +40,7 @@ function Navbar() {
                     <ul>
                         <li><Link to="/account">Wishlist</Link></li>
                         <li><Link to="/account">Account</Link></li>
-                        <li><a href="/">Logout</a></li>
+                        <li><Link to="/join">Logout</Link></li>
                     </ul>
                 </div>
                 <button onClick={handleHam} className="ham"><img src={ham} alt="HAM"/></button>
@@ -60,7 +60,7 @@ function Navbar() {
                         </div>
                         <Link to="/account"><p className="name">John Doe</p></Link>
                     </div>
-                    <p>L</p>
+                    <li><Link to="/join">Logout</Link></li>
                 </div>
             </div>
         </React.Fragment>

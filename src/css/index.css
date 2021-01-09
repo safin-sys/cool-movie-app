@@ -795,6 +795,10 @@ nav .ham {
   font-weight: bold;
 }
 
+.account {
+  height: 100vh;
+}
+
 .account .nav-bg {
   height: 64px;
   background-color: black;
@@ -880,6 +884,107 @@ nav .ham {
   color: #FD0001;
 }
 
+.join {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100vh;
+}
+
+.join .nav-bg {
+  height: 279px;
+  background-color: black;
+  width: 100%;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.join .nav-bg h1 {
+  margin-top: 64px;
+  font-weight: normal;
+}
+
+.join .form-container {
+  margin: 24px auto;
+}
+
+.join .form-container form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 18px;
+  width: 400px;
+  margin: 14px 0;
+}
+
+.join .form-container form div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 6px;
+}
+
+.join .form-container form input {
+  resize: horizontal;
+  height: 32px;
+  padding: 14px;
+  border: solid 1px #9E9DAD;
+}
+
+.join .form-container form input:focus {
+  border: none;
+  outline: 1px solid #FD0001;
+}
+
+.join .form-container form button {
+  padding: 6px;
+  border-radius: 24px;
+  font-size: 18px;
+  border: none;
+  background: -webkit-gradient(linear, left top, right top, color-stop(5%, #fd0001), color-stop(95%, #ff2f2f));
+  background: linear-gradient(90deg, #fd0001 5%, #ff2f2f 95%);
+  color: white;
+  cursor: pointer;
+}
+
+.join .form-container form button:focus {
+  outline: none;
+}
+
+.join .form-container p a,
+.join .form-container p button {
+  color: #FD0001;
+  text-decoration: none;
+  border: none;
+  background: none;
+  font-size: 16px;
+}
+
+.join .form-container p button:hover,
+.join .form-container p a:hover {
+  text-decoration: underline;
+}
+
 footer {
   width: 70%;
   margin: 48px auto auto auto;
@@ -925,15 +1030,15 @@ footer .text {
   display: flex;
   gap: 6px;
   text-align: center;
-  color: #222222;
 }
 
 footer .text a {
-  color: #222222;
+  color: black;
   text-decoration: none;
 }
 
 footer .text a:hover {
+  color: #FD0001;
   text-decoration: underline;
 }
 
@@ -950,6 +1055,10 @@ footer .social a svg {
   width: 24px;
   height: 24px;
   fill: black;
+}
+
+footer .social a svg:hover {
+  fill: #FD0001;
 }
 
 @media (max-width: 768px) {
@@ -1072,8 +1181,9 @@ footer .social a svg {
     margin-left: 14px;
     color: #FD0001;
   }
-  .ham-nav-menu .user p {
+  .ham-nav-menu .user a {
     color: #FD0001;
+    text-decoration: none;
   }
   .ham-menu-nav-active {
     -webkit-transform: translateX(0);
@@ -1186,6 +1296,9 @@ footer .social a svg {
   }
   .account .account-container main {
     width: 92%;
+  }
+  .join .form-container form {
+    width: auto;
   }
   footer {
     width: 85%;

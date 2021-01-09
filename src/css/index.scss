@@ -577,6 +577,7 @@ nav {
 
 //Account
 .account {
+    height: 100vh;
     .nav-bg {
         height: 64px;
         background-color: black;
@@ -634,6 +635,77 @@ nav {
     }
 }
 
+//Join
+.join {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    .nav-bg {
+        height: 279px;
+        background-color: black;
+        width: 100%;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h1 {
+            margin-top: 64px;
+            font-weight: normal;
+        }
+    }
+    .form-container {
+        margin: 24px auto;
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            width: 400px;
+            margin: 14px 0;
+            div {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+            }
+            input {
+                resize: horizontal;
+                height: 32px;
+                padding: 14px;
+                border: solid 1px #9E9DAD;
+            }
+            input:focus {
+                border: none;
+                outline: 1px solid #FD0001;
+            }
+            button {
+                padding: 6px;
+                border-radius: 24px;
+                font-size: 18px;
+                border: none;
+                background: linear-gradient(90deg, rgba(253,0,1,1) 5%, rgba(255,47,47,1) 95%);
+                color: white;
+                cursor: pointer;
+            }
+            button:focus {
+                outline: none;
+            }
+        }
+        p {
+            a,
+            button {
+                color: #FD0001;
+                text-decoration: none;
+                border: none;
+                background: none;
+                font-size: 16px;
+            }
+            button:hover,
+            a:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
 footer {
     width: 70%;
     margin: 48px auto auto auto;
@@ -663,12 +735,12 @@ footer {
         display: flex;
         gap: 6px;
         text-align: center;
-        color: #222222;
         a {
-            color: #222222;
+            color: black;
             text-decoration: none;
         }
         a:hover {
+            color: #FD0001;
             text-decoration: underline;
         }
     }
@@ -680,6 +752,9 @@ footer {
                 width: 24px;
                 height: 24px;
                 fill: black;
+            }
+            svg:hover {
+                fill: #FD0001;
             }
         }
     }
@@ -779,8 +854,9 @@ footer {
                     }
                 }
             }
-            p {
+            a {
                 color: #FD0001;
+                text-decoration: none;
             }
         }
     }
@@ -912,6 +988,15 @@ footer {
         .account-container {
             main {
                 width: 92%;
+            }
+        }
+    }
+
+    //Join
+    .join {
+        .form-container {
+            form {
+                width: auto;
             }
         }
     }
