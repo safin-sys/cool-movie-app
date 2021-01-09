@@ -33,7 +33,7 @@ function Account() {
                     <div className="wishlist">
                         {mviId.map((mvi, index) => {
                             return <Wishlist key={index} mvi={mvi} />
-                        })};
+                        })}
                     </div>
                 </main>
             </div>
