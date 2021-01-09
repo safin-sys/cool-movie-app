@@ -577,7 +577,7 @@ nav {
 
 //Account
 .account {
-    height: 100vh;
+    min-height: 100vh;
     .nav-bg {
         height: 64px;
         background-color: black;
@@ -639,7 +639,7 @@ nav {
 .join {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
     .nav-bg {
         height: 279px;
         background-color: black;

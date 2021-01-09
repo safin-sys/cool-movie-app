@@ -796,7 +796,7 @@ nav .ham {
 }
 
 .account {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .account .nav-bg {
@@ -892,7 +892,7 @@ nav .ham {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .join .nav-bg {
