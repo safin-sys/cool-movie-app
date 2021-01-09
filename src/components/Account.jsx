@@ -11,21 +11,6 @@ function Account() {
         {id: 44217, type: 'tv'}
     ]);
 
-    const [wishlist, setWishlist] = useState([]);
-
-    useEffect(() => {
-        setWishlist([])
-        mviId.forEach(mvi => {
-            const url = `https://api.themoviedb.org/3/${mvi.type}/${mvi.id}?api_key=${process.env.REACT_APP_API_KEY}`;
-            async function getWishlist() {
-                const res = await fetch(url);
-                const data = await res.json();
-                setWishlist(wishlist => [...wishlist, data]);
-            };
-            getWishlist();
-        })
-    }, [mviId])
-
     return (
         <div className="account">
             <div className="nav-bg"></div>
@@ -46,15 +31,38 @@ function Account() {
                 <main>
                     <h3 className="section-header">Wishlist</h3>
                     <div className="wishlist">
-                        {wishlist.map((wish, index) => {
-                            return <Movie key={index} movie={wish} />
-                        })}
+                        {mviId.map((mvi, index) => {
+                            return <Wishlist key={index} mvi={mvi} />
+                        })};
                     </div>
                 </main>
             </div>
             <h3 className="udev">This part of the website is Under Development</h3>
         </div>
-    )
-}
+    );
+};
 
 export default Account;
+
+function Wishlist({mvi}) {
+    const [wishlist, setWishlist] = useState([]);
+
+    useEffect(() => {
+        setWishlist([]);
+        async function getWishlist() {
+            const url = `https://api.themoviedb.org/3/${mvi.type}/${mvi.id}?api_key=${process.env.REACT_APP_API_KEY}`;
+            const res = await fetch(url);
+            const data = await res.json();
+            setWishlist(wishlist => [...wishlist, data]);
+        };
+        getWishlist();
+    }, [mvi.id, mvi.type]);
+
+    return (
+        <React.Fragment>
+            {wishlist.map((wish, index) => {
+                return <Movie key={index} movie={wish} />
+            })}
+        </React.Fragment>
+    );
+};
