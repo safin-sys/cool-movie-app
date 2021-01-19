@@ -1,5 +1,5 @@
 import React, {useState, useRef} from 'react';
-import firebase from "../firebase";
+import { useAuth } from '../context/AuthContext';
 
 function Join() {
     const [hasAcc, setHasAcc] = useState(false);
@@ -25,20 +25,24 @@ export default Join;
 function Login({handleSignUp}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const { login } = useAuth();
+    const [loading, setLoading] = useState(false);
 
-    async function login(e) {
+    async function handleLogin(e) {
         e.preventDefault();
         try {
-            await firebase.login(email, password);
+            setLoading(true);
+            await login(email, password);
         } catch(error) {
             alert(error.message);
             console.error(error)
         };
+        setLoading(false);
     };
 
     return (
         <div className="login form-container">
-            <form className="login-form">
+            <form className="login-form" onSubmit={e => handleLogin(e)}>
                 <div className="email">
                     <label htmlFor="email">Email address</label>
                     <input type="email" name="email" placeholder="Enter Email" onChange={e => setEmail(e.target.value)} />
@@ -49,7 +53,7 @@ function Login({handleSignUp}) {
                     <input type="password" name="password" placeholder="Enter Password" onChange={e => setPassword(e.target.value)} minLength="6" maxLength="32" />
                 </div>
 
-                <button onClick={e => login(e)}>Login</button>
+                <button disabled={loading}>Login</button>
             </form>
             <p><a href="/">Forgot Password?</a></p>
             <p>Don't have an account? <button onClick={handleSignUp}>Sign up here</button></p>
@@ -61,9 +65,18 @@ function Signup({handleLogin}) {
     const name = useRef();
     const email = useRef();
     const password = useRef();
+    const { signup } = useAuth();
+    const [loading, setLoading] = useState(false);
 
     async function handleSignup(e) {
         e.preventDefault();
+        try {
+            setLoading(true);
+            await signup(name.current.value, email.current.value, password.current.value);
+        } catch (error) {
+            console.log(error);
+        }
+        setLoading(false);
     };
 
     return (
@@ -84,7 +97,7 @@ function Signup({handleLogin}) {
                     <input type="password" name="password" placeholder="Enter Password" ref={password} required />
                 </div>
 
-                <button>Signup</button>
+                <button disabled={loading}>Signup</button>
             </form>
             <p>Already have an account? <button onClick={handleLogin}>Login here</button></p>
         </div>

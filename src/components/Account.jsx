@@ -15,6 +15,14 @@ function Account() {
         {id: 680, type: 'movie'},
     ]);
 
+    function nameLetter() {
+        if(currentUser.displayName) {
+            return currentUser.displayName.charAt(0);
+        } else {
+            return 'G'
+        }
+    }
+
     return (
         <div className="account">
             <div className="nav-bg"></div>
@@ -22,7 +30,7 @@ function Account() {
                 <aside>
                 <div className="user-info">
                         <div className="avatar">
-                            <p>G</p>
+                            <p>{nameLetter()}</p>
                         </div>
                         <p className="name">{currentUser && currentUser.displayName}</p>
                         <p className="mail">{currentUser && currentUser.email}</p>

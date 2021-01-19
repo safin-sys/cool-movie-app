@@ -21,6 +21,14 @@ function Navbar() {
         document.querySelector('nav > .user').classList.toggle('user-active');
     };
 
+    function nameLetter() {
+        if(currentUser) {
+            return currentUser.displayName.charAt(0);
+        } else {
+            return 'G'
+        }
+    }
+
     return (
         <React.Fragment>
             <nav>
@@ -34,14 +42,14 @@ function Navbar() {
                 <div className="user">
                     <div className="user__info">
                         <div className="avatar">
-                            <p onClick={handleAvatar}>G</p> 
+                            <p onClick={handleAvatar}>{nameLetter()}</p> 
                         </div>
                         <Link to="/account"><p className="name">{currentUser && currentUser.displayName}</p></Link>
                     </div>
                     <hr/>
                     <ul>
                         <li><Link to="/account">Wishlist</Link></li>
-                        <li><Link to="/join">Join</Link></li>
+                        {currentUser && currentUser.displayName !== 'Guest' ? <li><p onClick={logout}>Logout</p></li> : <li><Link to="/join">Join</Link></li>}
                     </ul>
                 </div>
                 <button onClick={handleHam} className="ham"><img src={ham} alt="HAM"/></button>
@@ -57,11 +65,11 @@ function Navbar() {
                 <div className="user">
                     <div className="user__info">
                         <div className="avatar">
-                            <p>G</p>
+                            <p>{nameLetter()}</p>
                         </div>
                         <Link to="/account"><p className="name">{currentUser && currentUser.displayName}</p></Link>
                     </div>
-                    <li><p onClick={logout}>Logout</p></li>
+                    {currentUser && currentUser.displayName !== 'Guest' ? <li><p onClick={logout}>Logout</p></li> : <li><Link to="/join">Join</Link></li>}
                 </div>
             </div>
         </React.Fragment>

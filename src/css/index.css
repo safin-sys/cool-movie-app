@@ -263,8 +263,10 @@ nav .user ul li {
   margin: 4px 10px;
 }
 
-nav .user ul li a {
+nav .user ul li a, nav .user ul li p {
   color: #FD0001;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 nav .user-active {
@@ -892,6 +894,10 @@ nav .ham {
           justify-content: space-between;
 }
 
+.account .account-container aside .user-control h5 {
+  cursor: pointer;
+}
+
 .account .account-container main {
   width: 70%;
   margin: auto;
@@ -1226,7 +1232,8 @@ footer .social a svg:hover {
     place-content: center;
     cursor: pointer;
   }
-  .ham-nav-menu .user li p {
+  .ham-nav-menu .user li p,
+  .ham-nav-menu .user li a {
     color: #FD0001;
     text-decoration: none;
   }

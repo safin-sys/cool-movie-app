@@ -167,8 +167,10 @@ nav {
                 visibility: hidden;
                 list-style: none;
                 margin: 4px 10px;
-                a {
+                a,p {
                     color: #FD0001;
+                    font-size: 14px;
+                    cursor: pointer;
                 }
             }
         }
@@ -634,6 +636,9 @@ nav {
                 color: #FD0001;
                 display: flex;
                 justify-content: space-between;
+                h5 {
+                    cursor: pointer;
+                }
             }
         }
         main {
@@ -877,7 +882,8 @@ footer {
                 display: grid;
                 place-content: center;
                 cursor: pointer;
-                p {
+                p,
+                a {
                     color: #FD0001;
                     text-decoration: none;
                 }

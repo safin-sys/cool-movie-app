@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { auth } from '../firebase';
+import { useHistory } from 'react-router-dom';
 
 const AuthContext = React.createContext()
 
@@ -11,14 +12,39 @@ export function useAuth() {
 export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState();
     const user = auth.currentUser;
+    const history = useHistory();
 
-    function signup(email, password) {
-        auth.createUserWithEmailAndPassword(email, password)
+    async function signup(name, email, password) {
+        await auth.createUserWithEmailAndPassword(email, password)
+                .then(res => {
+                    history.push('/account');
+                    alert('Account created successfully.');
+                    console.log(res);
+                })
+                .catch(err => {
+                    alert(err.message);
+                    console.log(err);
+                });
+        auth.currentUser.updateProfile({ displayName: name });
+    }
+
+    async function login(email, password) {
+        auth.signInWithEmailAndPassword(email, password)
+            .then(res => {
+                history.push('/account');
+                alert('Login Successful');
+                console.log(res);
+            })
+            .catch(err => {
+                alert(err.message);
+                console.log(err);
+            })
     }
 
     function logout() {
         if(user) {
             auth.signOut();
+            history.push('/');
             alert('Successfully logged out')
         } else {
             alert('You have to be logged in to logout.')
@@ -28,24 +54,36 @@ export function AuthProvider({ children }) {
     function deleteAccount() {
         if(user) {
             user.delete()
-            .then(res => alert(res))
-            .catch(err => alert(err))
+            .then(res => {
+                history.push('/');
+                alert('Account deleted successfully.');
+                console.log(res);
+            })
+            .catch(err => {
+                alert(err.message);
+                console.log(err);
+            })
         } else {
             alert('You have to be logged in to delete account.');
         }
     }
 
     useEffect(() => {
-        const unsubscribe = user ? auth.onAuthStateChanged(u => {
-            setCurrentUser(u);
-        }) : setCurrentUser({ displayName: 'Guest', email: 'guest@email.co.uk' });
-
-        return unsubscribe;
+        (async function getUser() {
+            auth.onAuthStateChanged(u => {
+                if(u) {
+                    setCurrentUser(u);
+                } else {
+                    setCurrentUser({ displayName: 'Guest', email: 'guest@email.com' });
+                }
+            });
+        } ());
     }, [user]);
 
     const value = {
         currentUser,
         signup,
+        login,
         logout,
         deleteAccount
     }
