@@ -41,7 +41,7 @@ export function AuthProvider({ children }) {
         }) : setCurrentUser({ displayName: 'Guest', email: 'guest@email.co.uk' });
 
         return unsubscribe;
-    }, []);
+    }, [user]);
 
     const value = {
         currentUser,
