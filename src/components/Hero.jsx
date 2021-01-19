@@ -61,7 +61,7 @@ function Hero() {
             <div className="hero">
                 <img className="hero-img" src={trend ? 'https://image.tmdb.org/t/p/' + widthCalc() + trend[0].backdrop_path : null} alt="Trending Movie Backdrop"/>
                 
-                <Link to={trend ? `${trend[0].media_type}/${trend[0].id}` : ''}><h1 className="title">{trend ? trend[0].original_title : null}</h1></Link>
+                <Link to={trend ? `${trend[0].media_type}/${trend[0].id}` : ''}><h1 className="title">{trend ? trend[0].original_title || trend[0].name : null}</h1></Link>
                 <p className="des">{trend ? trend[0].overview : null }</p>
                 {vid ? <a href={'https://youtu.be/' + vid.key} rel="noreferrer" target="_blank" className="watch-btn">Watch {vid.type} <img src={play} alt="Play Icon"/></a> : null}
             </div>

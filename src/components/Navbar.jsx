@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import ham from '../img/icons/hamburger.svg';
 import x from '../img/icons/x.svg';
-import avatar from '../img/john.jpg';
 import {Link} from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 function Navbar() {
     const [hamNavStatus, setHamNavStatus] = useState(false);
+    const {currentUser} = useAuth();
 
     function handleHam() {
         document.querySelector('.ham-nav-menu').classList.toggle("ham-menu-nav-active");
@@ -33,14 +34,14 @@ function Navbar() {
                 <div className="user">
                     <div className="user__info">
                         <div className="avatar">
-                            <img src={avatar} alt="avatar" onClick={handleAvatar} /> 
+                            <p onClick={handleAvatar}>G</p> 
                         </div>
-                        <Link to="/account"><p className="name">John Doe</p></Link>
+                        <Link to="/account"><p className="name">{currentUser ? currentUser.displayName : 'Guest'}</p></Link>
                     </div>
+                    <hr/>
                     <ul>
                         <li><Link to="/account">Wishlist</Link></li>
-                        <li><Link to="/account">Account</Link></li>
-                        <li><Link to="/join">Logout</Link></li>
+                        <li><Link to="/join">Join</Link></li>
                     </ul>
                 </div>
                 <button onClick={handleHam} className="ham"><img src={ham} alt="HAM"/></button>
@@ -56,9 +57,9 @@ function Navbar() {
                 <div className="user">
                     <div className="user__info">
                         <div className="avatar">
-                            <img src={avatar} alt="avatar"/>
+                            <p>G</p>
                         </div>
-                        <Link to="/account"><p className="name">John Doe</p></Link>
+                        <Link to="/account"><p className="name">{currentUser ? currentUser.displayName : 'Guest'}</p></Link>
                     </div>
                     <li><Link to="/join">Logout</Link></li>
                 </div>

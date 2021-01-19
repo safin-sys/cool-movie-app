@@ -199,16 +199,32 @@ nav .user__info {
 
 nav .user__info .avatar {
   height: 40px;
+  min-height: 40px;
+  max-height: 40px;
   width: 40px;
+  min-width: 40px;
   overflow: hidden;
   border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #FD0001;
+  cursor: pointer;
 }
 
-nav .user__info .avatar img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+nav .user__info .avatar p {
+  color: white;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 nav .user__info a {
@@ -222,9 +238,16 @@ nav .user__info a .name {
   visibility: hidden;
 }
 
+nav .user hr {
+  width: 100%;
+  border: none;
+  border-top: #FD0001 1px solid;
+  visibility: hidden;
+}
+
 nav .user ul {
   position: absolute;
-  bottom: 14px;
+  bottom: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -248,16 +271,19 @@ nav .user-active {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  height: 240px;
+  height: 184px;
   background-color: black;
 }
 
 nav .user-active .user__info {
-  border-bottom: 1px solid #FD0001;
   border-radius: 0;
 }
 
 nav .user-active .user__info .name {
+  visibility: visible;
+}
+
+nav .user-active hr {
   visibility: visible;
 }
 
@@ -839,13 +865,15 @@ nav .ham {
   width: 100px;
   overflow: hidden;
   border-radius: 50%;
+  background-color: #FD0001;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
 }
 
-.account .account-container aside .user-info .avatar img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+.account .account-container aside .user-info .avatar p {
+  color: white;
+  font-size: 48px;
 }
 
 .account .account-container aside .user-info .name {
@@ -877,11 +905,6 @@ nav .ham {
       flex-wrap: wrap;
   gap: 0 40px;
   margin: 0 10px;
-}
-
-.account .udev {
-  text-align: center;
-  color: #FD0001;
 }
 
 .join {
@@ -969,6 +992,11 @@ nav .ham {
 
 .join .form-container form button:focus {
   outline: none;
+}
+
+.join .form-container form button:disabled {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
 }
 
 .join .form-container p a,
@@ -1069,7 +1097,7 @@ footer .social a svg:hover {
             justify-content: space-between;
   }
   nav ul,
-  nav .avatar {
+  nav .user__info > .avatar {
     display: none;
   }
   nav .ham {
@@ -1080,10 +1108,6 @@ footer .social a svg:hover {
     border: none;
     cursor: pointer;
     background-color: transparent;
-  }
-  nav .ham img {
-    height: 30px;
-    width: 30px;
   }
   nav .ham:focus {
     outline: none;
@@ -1167,12 +1191,25 @@ footer .social a svg:hover {
     width: 50px;
     overflow: hidden;
     border-radius: 50%;
+    background-color: #FD0001;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    cursor: pointer;
   }
-  .ham-nav-menu .user__info .avatar img {
-    width: 100%;
-    height: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
+  .ham-nav-menu .user__info .avatar p {
+    color: white;
+    font-size: 20px;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
   }
   .ham-nav-menu .user__info a {
     text-decoration: none;
@@ -1295,7 +1332,12 @@ footer .social a svg:hover {
     margin: auto;
   }
   .account .account-container main {
-    width: 92%;
+    width: auto;
+  }
+  .account .account-container main .wishlist {
+    grid-gap: 0;
+    gap: 0;
+    margin: 0;
   }
   .join .form-container form {
     width: auto;

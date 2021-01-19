@@ -1,14 +1,18 @@
 import React, {useState, useEffect} from 'react';
-import john from "../img/john.jpg";
 import Movie from './Movie';
+import { useAuth } from '../context/AuthContext';
 
 function Account() {
+    const {currentUser, logout, deleteAccount} = useAuth();
     const [mviId] = useState([
+        {id: 278, type:'movie'}, 
         {id: 238, type:'movie'}, 
-        {id: 464052, type:'movie'}, 
-        {id: 508442, type:'movie'}, 
-        {id: 577922, type:'movie'},
-        {id: 44217, type: 'tv'}
+        {id: 240, type:'movie'}, 
+        {id: 155, type:'movie'},
+        {id: 389, type: 'movie'},
+        {id: 424, type: 'movie'},
+        {id: 122, type: 'movie'},
+        {id: 680, type: 'movie'},
     ]);
 
     return (
@@ -18,14 +22,14 @@ function Account() {
                 <aside>
                 <div className="user-info">
                         <div className="avatar">
-                            <img src={john} alt="avatar"/>
+                            <p>G</p>
                         </div>
-                        <p className="name">John Doe</p>
-                        <p className="mail">john@doe.com</p>
+                        <p className="name">{currentUser ? currentUser.displayName : 'Guest'}</p>
+                        <p className="mail">{currentUser ? currentUser.email : 'guest@email.org'}</p>
                     </div>
                     <div className="user-control">
-                        <h5>Delete Account</h5>
-                        <h5>Logout Account</h5>
+                        <h5 onClick={deleteAccount}>Delete Account</h5>
+                        <h5 onClick={logout}>Logout Account</h5>
                     </div>
                 </aside>
                 <main>
@@ -37,7 +41,6 @@ function Account() {
                     </div>
                 </main>
             </div>
-            <h3 className="udev">This part of the website is Under Development</h3>
         </div>
     );
 };
