@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext';
 
 function Navbar() {
     const [hamNavStatus, setHamNavStatus] = useState(false);
-    const {currentUser} = useAuth();
+    const {currentUser, logout} = useAuth();
 
     function handleHam() {
         document.querySelector('.ham-nav-menu').classList.toggle("ham-menu-nav-active");
@@ -36,7 +36,7 @@ function Navbar() {
                         <div className="avatar">
                             <p onClick={handleAvatar}>G</p> 
                         </div>
-                        <Link to="/account"><p className="name">{currentUser ? currentUser.displayName : 'Guest'}</p></Link>
+                        <Link to="/account"><p className="name">{currentUser && currentUser.displayName}</p></Link>
                     </div>
                     <hr/>
                     <ul>
@@ -59,9 +59,9 @@ function Navbar() {
                         <div className="avatar">
                             <p>G</p>
                         </div>
-                        <Link to="/account"><p className="name">{currentUser ? currentUser.displayName : 'Guest'}</p></Link>
+                        <Link to="/account"><p className="name">{currentUser && currentUser.displayName}</p></Link>
                     </div>
-                    <li><Link to="/join">Logout</Link></li>
+                    <li><p onClick={logout}>Logout</p></li>
                 </div>
             </div>
         </React.Fragment>

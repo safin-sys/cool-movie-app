@@ -872,9 +872,15 @@ footer {
                     }
                 }
             }
-            a {
-                color: #FD0001;
-                text-decoration: none;
+            li {
+                align-self: center;
+                display: grid;
+                place-content: center;
+                cursor: pointer;
+                p {
+                    color: #FD0001;
+                    text-decoration: none;
+                }
             }
         }
     }

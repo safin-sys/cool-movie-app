@@ -24,8 +24,8 @@ function Account() {
                         <div className="avatar">
                             <p>G</p>
                         </div>
-                        <p className="name">{currentUser ? currentUser.displayName : 'Guest'}</p>
-                        <p className="mail">{currentUser ? currentUser.email : 'guest@email.org'}</p>
+                        <p className="name">{currentUser && currentUser.displayName}</p>
+                        <p className="mail">{currentUser && currentUser.email}</p>
                     </div>
                     <div className="user-control">
                         <h5 onClick={deleteAccount}>Delete Account</h5>

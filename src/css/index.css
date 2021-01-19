@@ -1218,7 +1218,15 @@ footer .social a svg:hover {
     margin-left: 14px;
     color: #FD0001;
   }
-  .ham-nav-menu .user a {
+  .ham-nav-menu .user li {
+    -ms-grid-row-align: center;
+        align-self: center;
+    display: -ms-grid;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+  }
+  .ham-nav-menu .user li p {
     color: #FD0001;
     text-decoration: none;
   }
