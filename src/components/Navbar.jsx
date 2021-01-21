@@ -41,15 +41,16 @@ function Navbar() {
                 </ul>
                 <div className="user">
                     <div className="user__info">
-                        <div className="avatar">
-                            <p onClick={handleAvatar}>{nameLetter()}</p> 
+                        <div className="avatar" onClick={handleAvatar}>
+                            <p>{nameLetter()}</p> 
                         </div>
                         <Link to="/account"><p className="name">{currentUser && currentUser.displayName}</p></Link>
                     </div>
                     <hr/>
                     <ul>
                         <li><Link to="/account">Wishlist</Link></li>
-                        {currentUser && currentUser.displayName !== 'Guest' ? <li><p onClick={logout}>Logout</p></li> : <li><Link to="/join">Join</Link></li>}
+                        {currentUser && currentUser.displayName !== 'Guest' ? <li><Link to="/account">Account</Link></li> : <li><Link to="/signup">Signup</Link></li>}
+                        {currentUser && currentUser.displayName !== 'Guest' ? <li><p onClick={logout}>Logout</p></li> : <li><Link to="/login">Login</Link></li>}
                     </ul>
                 </div>
                 <button onClick={handleHam} className="ham"><img src={ham} alt="HAM"/></button>
@@ -61,6 +62,8 @@ function Navbar() {
                     <li><a href="/#now-playing">NOW PLAYING</a></li>
                     <li><a href="/#movies">MOVIES</a></li>
                     <li><a href="/#tv-shows">TV SHOWS</a></li>
+                    {currentUser && currentUser.displayName === 'Guest' ? <li><Link to="/signup">SIGNUP</Link></li> : null}
+                    {currentUser && currentUser.displayName === 'Guest' ? <li><Link to="/login">LOGIN</Link></li> : null}
                 </ul>
                 <div className="user">
                     <div className="user__info">
@@ -69,7 +72,7 @@ function Navbar() {
                         </div>
                         <Link to="/account"><p className="name">{currentUser && currentUser.displayName}</p></Link>
                     </div>
-                    {currentUser && currentUser.displayName !== 'Guest' ? <li><p onClick={logout}>Logout</p></li> : <li><Link to="/join">Join</Link></li>}
+                    {currentUser && currentUser.displayName !== 'Guest' ? <li><p onClick={logout}>Logout</p></li> : <li></li>}
                 </div>
             </div>
         </React.Fragment>

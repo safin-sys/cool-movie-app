@@ -16,7 +16,7 @@ function Account() {
     ]);
 
     function nameLetter() {
-        if(currentUser.displayName) {
+        if(currentUser) {
             return currentUser.displayName.charAt(0);
         } else {
             return 'G'

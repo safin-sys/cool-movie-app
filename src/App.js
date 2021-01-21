@@ -7,7 +7,7 @@ import MovieDetails from './components/MovieDetails';
 import Account from './components/Account';
 import Footer from './components/Footer';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Join from './components/Join';
+import { ForgotPassword, Login, Signup } from './components/Join';
 import { AuthProvider } from "./context/AuthContext";
 
 function App() {
@@ -20,7 +20,9 @@ function App() {
             <Route path="/" exact component={Home} />
             <Route path="/:type/:id" exact component={MovieDetails} />
             <Route path="/account" exact component={Account} />
-            <Route path="/join" exact component={Join} />
+            <Route path="/signup" exact component={Signup} />
+            <Route path="/login" exact component={Login} />
+            <Route path="/forgot" exact component={ForgotPassword} />
           </Switch>
           <Footer />
         </AuthProvider>

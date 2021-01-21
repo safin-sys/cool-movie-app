@@ -68,6 +68,19 @@ export function AuthProvider({ children }) {
         }
     }
 
+    async function forgotPassword(email) {
+        await auth.sendPasswordResetEmail(email)
+        .then(res => {
+            history.push('/login');
+            alert('Password reset details successfully sent to your email.')
+            console.log(res);
+        })
+        .catch(err => {
+            alert(err.message);
+            console.log(err);
+        });
+    };
+
     useEffect(() => {
         (async function getUser() {
             auth.onAuthStateChanged(u => {
@@ -85,7 +98,8 @@ export function AuthProvider({ children }) {
         signup,
         login,
         logout,
-        deleteAccount
+        deleteAccount,
+        forgotPassword
     }
 
     return (
