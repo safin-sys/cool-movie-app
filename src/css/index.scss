@@ -389,6 +389,7 @@ nav {
     width: 200px;
     position: relative;
     margin: auto;
+    overflow: hidden;
     .img-container {
         height: 300px;
         width: 200px;
@@ -398,6 +399,35 @@ nav {
         border-radius: 10px;
         box-shadow: 0px 14px 14px -10px rgba(0,0,0,0.6);
         margin-bottom: 18px;
+    }
+    .watchlist-btn {
+        position: absolute;
+        top: -14px;
+        right: 4px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+        svg {
+            width: 44px;
+            height: 44px;
+            fill: #FD0001;
+        }
+        .watchlist-active {
+            display: none;
+        }
+    }
+    .watchlist-btn:focus {
+        outline: none;
+    }
+    .watchlist-btn:hover {
+        top: -5px;
+        .watchlist-neutral {
+            display: none;
+        }
+        .watchlist-active {
+            display: block;
+        }
     }
     .rating {
         position: absolute;

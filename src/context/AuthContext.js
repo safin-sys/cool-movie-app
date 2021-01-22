@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { auth, db } from '../firebase';
+import firebase from 'firebase';
 import { useHistory } from 'react-router-dom';
 
 const AuthContext = React.createContext()
@@ -83,6 +84,12 @@ export function AuthProvider({ children }) {
         });
     };
 
+    async function addMovie(id, type) {
+        db.collection("users").doc(user.uid).update({
+            movieList: firebase.firestore.FieldValue.arrayUnion({id, type})
+        });
+    };
+
     useEffect(() => {
         (async function getUser() {
             auth.onAuthStateChanged(u => {
@@ -97,12 +104,8 @@ export function AuthProvider({ children }) {
 
     useEffect(() => {
         if(user) {
-            db.collection("users").doc(user.uid).get()
-            .then(doc => {
+            db.collection("users").doc(user.uid).onSnapshot(doc => {
                 setMovieList(doc.data().movieList);
-            })
-            .catch(err => {
-                console.log(err);
             })
         }
     }, [user])
@@ -114,7 +117,8 @@ export function AuthProvider({ children }) {
         logout,
         deleteAccount,
         forgotPassword,
-        movieList
+        movieList,
+        addMovie
     }
 
     return (

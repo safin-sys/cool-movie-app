@@ -49,7 +49,7 @@ function Navbar() {
                     </div>
                     <hr/>
                     <ul>
-                        <li><Link to="/account">Wishlist</Link></li>
+                        <li><Link to="/account">Watchlist</Link></li>
                         {currentUser && currentUser.displayName !== 'Guest' ? <li><Link to="/account">Account</Link></li> : <li><Link to="/signup">Signup</Link></li>}
                         {currentUser && currentUser.displayName !== 'Guest' ? <li><p onClick={logout}>Logout</p></li> : <li><Link to="/login">Login</Link></li>}
                     </ul>

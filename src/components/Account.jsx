@@ -50,7 +50,7 @@ function Account() {
                     </div>
                 </aside>
                 <main>
-                    <h3 className="section-header">Wishlist</h3>
+                    <h3 className="section-header">Watchlist</h3>
                     <div className="wishlist">
                         {mviId.map((mvi, index) => {
                             return <Wishlist key={index} mvi={mvi} />

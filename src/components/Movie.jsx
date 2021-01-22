@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import noimg from '../img/img404.webp';
 import {Link} from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const genre = [
     {
@@ -113,6 +114,8 @@ const genre = [
     }
 ];
 function Movie({ movie }) {
+  const [watchlist, setWatchlist] = useState(false);
+  const { currentUser, addMovie } = useAuth();
 
   function renderImg() {
     if (movie.poster_path) {
@@ -128,6 +131,25 @@ function Movie({ movie }) {
           style={{
             backgroundImage: `linear-gradient(0deg, rgba(2,0,36,0.50) 0%, rgba(0,212,255,0) 40%),url(${renderImg()})`
           }}></div>
+          {currentUser && currentUser.displayName !== 'Guest' && <button className="watchlist-btn">
+
+            <div className="watchlist-neutral">
+              <svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                <path d="M19 10.132v-6c0-1.103-.897-2-2-2H7c-1.103 0-2 .897-2 2V22l7-4.666L19 22V10.132z"/>
+              </svg>
+            </div>
+
+            <div className="watchlist-active">
+              {watchlist ? 
+                <svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                  <path d="M17 2H7a2 2 0 0 0-2 2v18l7-4.848L19 22V4a2 2 0 0 0-2-2zm-1 9H8V9h8v2z"/>
+                </svg> : 
+                <svg onClick={() => addMovie(movie.id, 'movie')} preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                  <path d="M17 2H7a2 2 0 0 0-2 2v18l7-4.848L19 22V4a2 2 0 0 0-2-2zm-1 9h-3v3h-2v-3H8V9h3V6h2v3h3v2z" />
+                </svg>}
+            </div>
+
+            </button>}
           
           <p className="rating">{movie ? movie.vote_average : 0}</p>
           <Link to={`../${movie && movie.first_air_date ? 'tv' : 'movie'}/${movie.id}`}><h3 className="title">{movie ? movie.original_title || movie.original_name : null}</h3></Link>
