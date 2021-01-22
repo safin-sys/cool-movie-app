@@ -38,7 +38,7 @@ export function Login({handleSignUp}) {
                     <button disabled={loading}>Login</button>
                 </form>
                 <p><Link to="/forgot">Forgot Password?</Link></p>
-                <p>Don't have an account? <button onClick={handleSignUp}>Sign up here</button></p>
+                <p>Don't have an account? <Link to="/signup">Sign up here</Link></p>
             </div>
         </div>
     );
@@ -84,7 +84,7 @@ export function Signup({handleLogin}) {
 
                     <button disabled={loading}>Signup</button>
                 </form>
-                <p>Already have an account? <button onClick={handleLogin}>Login here</button></p>
+                <p>Already have an account? <Link to="/login">Login here</Link></p>
             </div>
         </div>
     );

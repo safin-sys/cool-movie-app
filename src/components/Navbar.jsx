@@ -23,7 +23,8 @@ function Navbar() {
 
     function nameLetter() {
         if(currentUser) {
-            return currentUser.displayName.charAt(0);
+            const name = currentUser.displayName.charAt(0);
+            return name;
         } else {
             return 'G'
         }

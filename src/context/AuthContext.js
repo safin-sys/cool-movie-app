@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { auth } from '../firebase';
+import { auth, db } from '../firebase';
 import { useHistory } from 'react-router-dom';
 
 const AuthContext = React.createContext()
@@ -11,6 +11,7 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState();
+    const [movieList, setMovieList] = useState();
     const user = auth.currentUser;
     const history = useHistory();
 
@@ -19,6 +20,7 @@ export function AuthProvider({ children }) {
                 .then(res => {
                     history.push('/account');
                     alert('Account created successfully.');
+                    db.collection("users").doc(res.user.uid).set({ movieList: [] });
                     console.log(res);
                 })
                 .catch(err => {
@@ -93,13 +95,26 @@ export function AuthProvider({ children }) {
         } ());
     }, [user]);
 
+    useEffect(() => {
+        if(user) {
+            db.collection("users").doc(user.uid).get()
+            .then(doc => {
+                setMovieList(doc.data().movieList);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+        }
+    }, [user])
+
     const value = {
         currentUser,
         signup,
         login,
         logout,
         deleteAccount,
-        forgotPassword
+        forgotPassword,
+        movieList
     }
 
     return (

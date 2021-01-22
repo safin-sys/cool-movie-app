@@ -3,21 +3,30 @@ import Movie from './Movie';
 import { useAuth } from '../context/AuthContext';
 
 function Account() {
-    const {currentUser, logout, deleteAccount} = useAuth();
-    const [mviId] = useState([
-        {id: 278, type:'movie'}, 
-        {id: 238, type:'movie'}, 
-        {id: 240, type:'movie'}, 
-        {id: 155, type:'movie'},
-        {id: 389, type: 'movie'},
-        {id: 424, type: 'movie'},
-        {id: 122, type: 'movie'},
-        {id: 680, type: 'movie'},
-    ]);
+    const {currentUser, logout, deleteAccount, movieList} = useAuth();
+    const [mviId, setMviId] = useState([]);
+
+    useEffect(() => {
+        if(currentUser && currentUser.displayName !== 'Guest' && movieList) {
+            setMviId(movieList);
+        } else {
+            setMviId([
+                {id: 278, type:'movie'}, 
+                {id: 238, type:'movie'}, 
+                {id: 240, type:'movie'}, 
+                {id: 155, type:'movie'},
+                {id: 389, type: 'movie'},
+                {id: 424, type: 'movie'},
+                {id: 122, type: 'movie'},
+                {id: 680, type: 'movie'},
+            ]);
+        };
+    }, [currentUser, movieList])
 
     function nameLetter() {
         if(currentUser) {
-            return currentUser.displayName.charAt(0);
+            const name = currentUser.displayName.charAt(0);
+            return name;
         } else {
             return 'G'
         }
