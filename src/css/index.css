@@ -590,6 +590,10 @@ nav .ham {
   display: none;
 }
 
+.card button.active {
+  top: -5px;
+}
+
 .card .watchlist-btn:focus {
   outline: none;
 }

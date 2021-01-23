@@ -417,6 +417,9 @@ nav {
             display: none;
         }
     }
+    button.active {
+        top: -5px;
+    }
     .watchlist-btn:focus {
         outline: none;
     }

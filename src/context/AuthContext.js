@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { auth, db } from '../firebase';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import { useHistory } from 'react-router-dom';
 
 const AuthContext = React.createContext()
@@ -84,9 +84,15 @@ export function AuthProvider({ children }) {
         });
     };
 
-    async function addMovie(id, type) {
+    function addMovie(id, type) {
         db.collection("users").doc(user.uid).update({
             movieList: firebase.firestore.FieldValue.arrayUnion({id, type})
+        });
+    };
+
+    function removeMovie(id, type) {
+        db.collection("users").doc(user.uid).update({
+            movieList: firebase.firestore.FieldValue.arrayRemove({id, type})
         });
     };
 
@@ -118,7 +124,8 @@ export function AuthProvider({ children }) {
         deleteAccount,
         forgotPassword,
         movieList,
-        addMovie
+        addMovie,
+        removeMovie
     }
 
     return (

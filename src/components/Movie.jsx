@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import noimg from '../img/img404.webp';
 import {Link} from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -115,7 +115,7 @@ const genre = [
 ];
 function Movie({ movie }) {
   const [watchlist, setWatchlist] = useState(false);
-  const { currentUser, addMovie } = useAuth();
+  const { currentUser, addMovie, movieList, removeMovie } = useAuth();
 
   function renderImg() {
     if (movie.poster_path) {
@@ -125,13 +125,21 @@ function Movie({ movie }) {
     };
   };
 
+  useEffect(() => {
+    movieList && movieList.forEach(mvi => {
+      if(mvi.id === movie.id) {
+        setWatchlist(true);
+      }
+    });
+  }, [movie.id, movieList]);
+
   return (
       <div className="card">
           <div className="img-container" 
           style={{
             backgroundImage: `linear-gradient(0deg, rgba(2,0,36,0.50) 0%, rgba(0,212,255,0) 40%),url(${renderImg()})`
           }}></div>
-          {currentUser && currentUser.displayName !== 'Guest' && <button className="watchlist-btn">
+          {currentUser && currentUser.displayName !== 'Guest' && <button className={`watchlist-btn ${watchlist ? 'active' : null}`}>
 
             <div className="watchlist-neutral">
               <svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
@@ -141,10 +149,10 @@ function Movie({ movie }) {
 
             <div className="watchlist-active">
               {watchlist ? 
-                <svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                <svg onClick={() => removeMovie(movie.id, movie.first_air_date ? 'tv' : 'movie')} preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
                   <path d="M17 2H7a2 2 0 0 0-2 2v18l7-4.848L19 22V4a2 2 0 0 0-2-2zm-1 9H8V9h8v2z"/>
                 </svg> : 
-                <svg onClick={() => addMovie(movie.id, 'movie')} preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                <svg onClick={() => addMovie(movie.id, movie.first_air_date ? 'tv' : 'movie')} preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
                   <path d="M17 2H7a2 2 0 0 0-2 2v18l7-4.848L19 22V4a2 2 0 0 0-2-2zm-1 9h-3v3h-2v-3H8V9h3V6h2v3h3v2z" />
                 </svg>}
             </div>
