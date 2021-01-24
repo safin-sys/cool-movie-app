@@ -558,6 +558,7 @@ nav .ham {
 }
 
 .card .img-container {
+  display: block;
   height: 300px;
   width: 200px;
   background-size: cover;
@@ -567,6 +568,7 @@ nav .ham {
   -webkit-box-shadow: 0px 14px 14px -10px rgba(0, 0, 0, 0.6);
           box-shadow: 0px 14px 14px -10px rgba(0, 0, 0, 0.6);
   margin-bottom: 18px;
+  cursor: pointer;
 }
 
 .card .watchlist-btn {
@@ -637,6 +639,7 @@ nav .ham {
 
 .card a:hover {
   text-decoration: underline;
+  color: #222222;
 }
 
 .card .genre {

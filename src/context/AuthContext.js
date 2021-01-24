@@ -19,10 +19,10 @@ export function AuthProvider({ children }) {
     async function signup(name, email, password) {
         await auth.createUserWithEmailAndPassword(email, password)
                 .then(res => {
-                    history.push('/account');
                     alert('Account created successfully.');
                     db.collection("users").doc(res.user.uid).set({ movieList: [] });
                     console.log(res);
+                    window.location.href = '/';
                 })
                 .catch(err => {
                     alert(err.message);
@@ -66,6 +66,7 @@ export function AuthProvider({ children }) {
                 alert(err.message);
                 console.log(err);
             })
+            db.collection('users').doc(user.uid).delete();
         } else {
             alert('You have to be logged in to delete account.');
         }

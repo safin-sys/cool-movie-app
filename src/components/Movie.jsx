@@ -126,19 +126,19 @@ function Movie({ movie }) {
   };
 
   useEffect(() => {
-    movieList && movieList.forEach(mvi => {
-      if(mvi.id === movie.id) {
-        setWatchlist(true);
-      }
-    });
+    if(movieList && movieList.some(el => el.id === movie.id)) {
+      setWatchlist(true);
+    } else {
+      setWatchlist(false);
+    };
   }, [movie.id, movieList]);
 
   return (
       <div className="card">
-          <div className="img-container" 
+          <Link to={`../${movie && movie.first_air_date ? 'tv' : 'movie'}/${movie.id}`} className="img-container" 
           style={{
             backgroundImage: `linear-gradient(0deg, rgba(2,0,36,0.50) 0%, rgba(0,212,255,0) 40%),url(${renderImg()})`
-          }}></div>
+          }}></Link>
           {currentUser && currentUser.displayName !== 'Guest' && <button className={`watchlist-btn ${watchlist ? 'active' : null}`}>
 
             <div className="watchlist-neutral">
