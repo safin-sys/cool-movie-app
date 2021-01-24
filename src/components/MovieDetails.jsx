@@ -6,6 +6,7 @@ import Carousel from 'react-elastic-carousel';
 import Movie from './Movie'
 
 function MovieDetails({ match }) {
+    const [loading, setLoading] = useState(true);
     const [movie, setMovie] = useState({});
 
     const url = `https://api.themoviedb.org/3/${match.params.type}/${match.params.id}?api_key=${process.env.REACT_APP_API_KEY}`;
@@ -29,17 +30,24 @@ function MovieDetails({ match }) {
 
     useEffect(()=>{
         async function getMovieData() {
+            setLoading(true);
             const res = await fetch(url);
             const data = await res.json();
-
+            
             setMovie(data);
+            setLoading(false);
         };
-
+        
         getMovieData();
         window.scrollTo(0, 0)
     }, [url]);
     return (
         <React.Fragment>
+            {loading ? <div className="loading">
+                <div className="logo">
+                    <h1>COOL <br/> MOVIEAPP</h1>
+                </div>
+            </div> : null}
             <div className="md-hero">
                 <div className="md-hero__img">
                     {movie.backdrop_path ? <img className="hero-img" src={imgUrl + movie.backdrop_path} alt={movie.original_title + 'Backdrop'} /> : null}

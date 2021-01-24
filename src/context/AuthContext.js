@@ -34,7 +34,7 @@ export function AuthProvider({ children }) {
     async function login(email, password) {
         auth.signInWithEmailAndPassword(email, password)
             .then(res => {
-                history.push('/account');
+                history.push('/');
                 alert('Login Successful');
                 console.log(res);
             })
