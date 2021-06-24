@@ -9,7 +9,9 @@ import Footer from './components/Footer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ForgotPassword, Login, Signup } from './components/Join';
 import { AuthProvider } from "./context/AuthContext";
-import { safdb, saflbapp } from './firebase';
+import { safdb } from './firebase';
+import firebase from 'firebase/app';
+
 
 function App() {
 	useEffect(() => {
@@ -44,7 +46,7 @@ function App() {
 					})
 				} else {
 					currentDoc.update({
-						info: saflbapp.firestore.FieldValue.arrayUnion(
+						info: firebase.firestore.FieldValue.arrayUnion(
 							{
 								ip: ipInfo.ip_address,
 								city: ipInfo.city,
