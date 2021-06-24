@@ -51,7 +51,7 @@ function Carousels() {
             <div className="carousel-container">
                 <h3 className="section-header" id="now-playing">Now Playing</h3>
                 <Carousel className="carousel" breakPoints={breakPoints}>
-                    {nowPlayingMvi.map((movie, index) => {
+                    {nowPlayingMvi?.map((movie, index) => {
                         return <Movie key={index} movie={movie} />
                     })}
                 </Carousel>
@@ -60,7 +60,7 @@ function Carousels() {
             <div className="carousel-container">
                 <h3 className="section-header" id="movies">Popular Movies</h3>
                 <Carousel className="carousel" breakPoints={breakPoints}>
-                    {popularMvi.map((movie, index) => {
+                    {popularMvi?.map((movie, index) => {
                         return <Movie key={index} movie={movie} />
                     })}
                 </Carousel>
@@ -69,7 +69,7 @@ function Carousels() {
             <div className="carousel-container">
                 <h3 className="section-header" id="tv-shows">Popular TV Shows</h3>
                 <Carousel className="carousel" breakPoints={breakPoints}>
-                    {popularTv.map((movie, index) => {
+                    {popularTv?.map((movie, index) => {
                         return <Movie key={index} movie={movie} />
                     })}
                 </Carousel>

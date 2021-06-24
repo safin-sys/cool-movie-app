@@ -18,7 +18,7 @@ function Hero() {
             const data = await res.json();            
             const trendData = data.results;
 
-            const videos = `https://api.themoviedb.org/3/${trendData[0].media_type}/${trendData[0].id}/videos?api_key=${process.env.REACT_APP_API_KEY}`;
+            const videos = data && data.results && `https://api.themoviedb.org/3/${trendData[0].media_type}/${trendData[0].id}/videos?api_key=${process.env.REACT_APP_API_KEY}`;
 
             const vidres = await fetch(videos);
             const viddata = await vidres.json();
